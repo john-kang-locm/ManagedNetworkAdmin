@@ -1,0 +1,23 @@
+﻿body {
+  padding-top: 50px;
+}
+.main-wraper {
+  padding: 40px 15px;
+}
+.navbar-brand,
+.navbar-brand:active,
+.navbar-brand:link,
+.navbar-brand:visited
+{
+	color: #c82829;
+}
+	.navbar-brand:hover
+	{
+		color: #fff !important;
+		background-color: #c82829 !important;
+	}
+
+a.no-under:hover
+{
+	text-decoration: none;
+}

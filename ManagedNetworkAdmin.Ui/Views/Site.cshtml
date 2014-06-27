@@ -1,0 +1,133 @@
+﻿@{
+    PageData["title"] = "Managed Network Admin | Home";
+}
+<form ng-controller="SiteController" ng-submit="addSite()">
+    @*   
+    <div class="modal-body sites">
+        <label>Site Name</label>
+        <input type="text" ng-model="selectedSite.name" />
+        <label>Display Name</label>
+        <input type="text" ng-model="selectedSite.displayname" />
+        <label>Description</label>
+        <textarea ng-model="selectedSite.description" />
+        <label>Host Name</label>
+        <input type="text" ng-model="selectedSite.hostname" />
+        <label>Default Location</label>
+        <input type="text" ng-model="selectedSite.defaultlocation" />
+        <label>Default State</label>
+        <select ng-model="selectedSite.defaultlocation"></select>
+        <label>Geoip</label>
+        <input type="checkbox" ng-model="selectedSite.geoip" />
+        <label>Partner Id</label>
+        <input type="text" ng-model="selectedSite.partnerid" />
+        <label>Site Id</label>
+        <input type="text" ng-model="selectedSite.id" />
+        <fieldset title="Layout">
+            <input type="radio" name="radio_layout" ng-model="selectedSite.radio_layout" />
+            <label>Select Existing Layout</label>
+            <select ng-model="selectedSite.layout"></select>
+        </fieldset>
+    </div>
+    *@
+
+ <div class="modal-body sites">
+     <div>
+         <label>Site Name</label>
+         <input type="text" ng-model="selectedSite.name" />
+     </div>
+     <div>
+         <label>Display Name</label>
+         <input type="text" ng-model="selectedSite.displayname" />
+     </div>
+     <div>
+         <label>Description</label>
+         <textarea ng-model="selectedSite.description" />
+     </div>
+     <div>
+         <label>Host Name</label>
+         <input type="text" ng-model="selectedSite.hostname" />
+     </div>
+     <div>
+         <label>Default Location</label>
+         <input type="text" ng-model="selectedSite.defaultlocation" />
+     </div>
+     <div>
+         <label>Default State</label>
+         <select ng-model="selectedSite.defaultstate"></select>
+     </div>
+     <div>
+         <label>Geoip</label>
+         <input type="checkbox" ng-model="selectedSite.geoip" />
+     </div>
+     <div>
+         <label>Partner Id</label>
+         <input type="text" ng-model="selectedSite.partnerid" />
+     </div>
+     <div>
+         <label>Site Id</label>
+         <input type="text" ng-model="selectedSite.partnersiteid" />
+     </div>
+     <div class="sitelayout">
+         <div id="select">
+             <fieldset name="Layout" title="Layout">
+                 <legend>Layout</legend>
+                 <div>
+                     <input type="radio" value="exsiting" name="radio_layout" ng-model="selectedSite.radio_layout" />
+                     <label>Select Existing Layout</label>
+                     <select ng-model="selectedSite.layout"></select>
+                 </div>
+                 <div>
+                     <input type="radio" value="new" name="radio_layout" ng-model="selectedSite.radio_layout" />
+                     <label>
+                         Add new Layout</label>
+                     <input type="text" ng-model="selectedSite.newlayout" />
+                 </div>
+
+             </fieldset>
+         </div>
+
+         <div>
+             <label>Head</label>
+             <textarea ng-model="selectedSite.head"></textarea>
+         </div>
+         <div>
+             <label>Header</label>
+             <textarea ng-model="selectedSite.header"></textarea>
+         </div>
+         <div>
+             <label>Footer</label>
+             <textarea ng-model="selectedSite.footer"></textarea>
+         </div>
+         <div>
+             <label>Tracking</label>
+             <textarea ng-model="selectedSite.tracking"></textarea>
+         </div>
+     </div>
+ </div>
+    <button type="submit" class="btn btn-success btn-lg btn-block">
+        <span class="glyphicon glyphicon-flash"></span>Submit!
+    </button>
+</form>
+
+
+@*<div class="homeMiddle" ng-app="app" ng-controller="SiteController">
+    <div class="siteGridStyle" ng-grid="homeGridOptions"></div>
+</div>
+*@
+@*<div class="row">
+    <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="login(userName, password)">
+        <h2 class="text-center">Home</h2>
+        <div class="form-box">
+            <div class="form-group">
+                <input ng-model="selectedSite.userName" type="text" class="form-control" placeholder="Username or Email" required autofocus />
+            </div>
+            <div class="form-group">
+                <input ng-model="selectedSite.password" type="password" class="form-control" placeholder="Password" required />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" ng-disabled="!(userName && password)" disabled>Sign In</button>
+            </div>
+        </div>
+    </form>
+</div>
+*@

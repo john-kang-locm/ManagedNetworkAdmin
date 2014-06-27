@@ -1,0 +1,140 @@
+﻿body
+{
+}
+
+.siteGridStyle
+{
+    border: 1px solid rgb(212,212,212);
+    width: 1000px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.layoutGridStyle
+{
+    border: 1px solid rgb(212,212,212);
+    width: 700px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeMiddle
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*.sputnik label { 
+    display:block;
+    float:left
+}.sputnik input, .sputnik txtarea { 
+    display:inline;
+    float:right
+}
+.sputnik input { 
+    border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1); 
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+}*/
+
+/*label{
+    float:left;
+    display: block;
+     width: 200px;
+}
+:before { content: '\A'; }
+.sites input[type="text"], .sites textarea, .sites select {
+    float:left;
+    display: block;
+    width: 300px;
+}
+
+.sites input[type="text"], .sites textarea , .sites select {
+    font-family: Arial, Sans-Serif;
+    font-size: 13px;
+    margin-bottom: 5px;
+    padding: 4px;
+    border: solid 1px #85b1de;
+    background-color: #EDF2F7;
+}*/
+
+.sites
+{
+    font-family: Arial, Sans-Serif;
+    font-size: 13px;
+    margin-bottom: 5px;
+    padding: 4px;
+    border: solid 1px #85b1de;
+    background-color: #EDF2F7;
+}
+
+    .sites label, .sites input, .sites textarea
+    {
+        display: inline-block;
+    }
+
+    .sites label
+    {
+        width: 25%;
+    }
+
+    .sites input[type="text"], .sites textarea
+    {
+        width: 70%;
+    }
+
+.sitelayout label
+{
+    display: block;
+    width: 200px;
+}
+
+.sitelayout textarea
+{
+    display: block;
+    width: 95%;
+}
+
+.sitelayout
+{
+    border: groove;
+}
+
+    .sitelayout #select
+    {
+        border: thick;
+    }
+
+        .sitelayout #select label
+        {
+            display: inline-block;
+            width: 20%;
+        }
+
+        .sitelayout #select input[type="radio"]
+        {
+            display: inline-block;
+            width: 5%;
+        }
+
+        .sitelayout #select input[type="text"], .sitelayout#select select
+        {
+            display: inline-block;
+            width: 70%;
+        }
+.modal-content {
+    width: 800px;
+}

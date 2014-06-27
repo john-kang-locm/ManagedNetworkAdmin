@@ -1,0 +1,212 @@
+<!-- <div ng-app="app" ng-controller="ModalInstanceCtrl" style="width:800px" >-->
+<div ng-app="app"  >
+    <form  >
+        <!--<form ng-submit="addsite()">-->
+
+
+            <div class="modal-body sites">
+                <div>
+                    <!--         <p>test0 {{selectedSite}}</p>
+                <p>test1 {{selectedSite.name}}</p>
+                <p>test2 {{content}}</p>
+                <p>test3 {{test3}}</p>
+                <p>test4 {{test4}}</p>-->
+                    <label>Site Name</label>
+                    <input type="text" ng-model="selectedSite.Name" />
+                </div>
+                <div>
+                    <label>Display Name</label>
+                    <input type="text" ng-model="selectedSite.Displayname" />
+                </div>
+                <div>
+                    <label>Description</label>
+                    <textarea ng-model="selectedSite.Description" />
+                </div>
+                <div>
+                    <label>Host Name</label>
+                    <input type="text" ng-model="selectedSite.Hostname" />
+                </div>
+                <div>
+                    <label>Default Location</label>
+                    <input type="text" ng-model="selectedSite.Defaultlocation" />
+                </div>
+                <div>
+                    <label>Default State</label>
+                    <select ng-model="selectedSite.Defaultstate"></select>
+                </div>
+                <div>
+                    <label>Geoip</label>
+                    <input type="checkbox" ng-model="selectedSite.Geoip" />
+                </div>
+                <div>
+                    <label>Partner Id</label>
+                    <input type="text" ng-model="selectedSite.Partnerid" />
+                </div>
+                <div>
+                    <label>Site Id</label>
+                    <input type="text" ng-model="selectedSite.Partnersiteid" />
+                </div>
+                <!--     <div class="sitelayout">
+                <div id="select">
+                    <fieldset name="Layout" title="Layout">
+                        <legend>Layout</legend>
+                        <div>
+                            <input type="radio" value="exsiting" name="radio_layout" ng-model="selectedSite.radio_layout" />
+                            <label>Select Existing Layout</label>
+                            <select ng-model="selectedSite.layout"></select>
+                        </div>
+                        <div>
+                            <input type="radio" value="new" name="radio_layout" ng-model="selectedSite.radio_layout" />
+                            <label>
+                                Add new Layout</label>
+                            <input type="text" ng-model="selectedSite.newlayout" />
+                        </div>
+
+                    </fieldset>
+                </div>
+
+                <div>
+                    <label>Head</label>
+                    <textarea ng-model="selectedSite.head"></textarea>
+                </div>
+                <div>
+                    <label>Header</label>
+                    <textarea ng-model="selectedSite.header"></textarea>
+                </div>
+                <div>
+                    <label>Footer</label>
+                    <textarea ng-model="selectedSite.footer"></textarea>
+                </div>
+                <div>
+                    <label>Tracking</label>
+                    <textarea ng-model="selectedSite.tracking"></textarea>
+                </div>
+            </div>-->
+            </div>
+
+
+
+            <div ng-controller="LayoutAccordion">
+                <accordion close-others="oneAtATime">
+                    <accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                        <div class="sitelayout">
+                            <div>
+                                <input name="layout" type="radio" ng-model='layoutContent' value="existing"> Select an existing Layout<br>
+                                <input name="layout" type="radio" ng-model='layoutContent' value="new"> Add a new Layout<br>
+                            </div>
+                            <div ng-show="layoutContent=='existing'" ng-controller="ExistingLayoutCtrl">
+                                <div class="layoutGridStyle" ng-grid="existingLayoutGridOptions"></div>
+                            </div>
+                            <div class="wrapper">
+                                <p ng-show="layoutContent == 'Existing'">This is the first content!</p>
+                                <div ng-show="layoutContent == 'new'">
+                                    <div>
+                                        <label>Head</label>
+                                        <textarea ng-model="selectedSite.Head"></textarea>
+                                    </div>
+                                    <div>
+                                        <label>Header</label>
+                                        <textarea ng-model="selectedSite.Header"></textarea>
+                                    </div>
+                                    <div>
+                                        <label>Footer</label>
+                                        <textarea ng-model="selectedSite.Footer"></textarea>
+                                    </div>
+                                    <div>
+                                        <label>Tracking</label>
+                                        <textarea ng-model="selectedSite.Tracking"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <accordion-heading>
+                            Layout <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </accordion-heading>
+                        <!--            <br>-->
+                    </accordion-group>
+                </accordion>
+            </div>
+            <div ng-controller="SettingAccordion">
+                <accordion close-others="oneAtATime">
+                    <accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+                        <div class="sitelayout">
+                            <div>
+                                <input name="layout" type="radio" ng-model='settingContent' value="existing"> Select existing Settings<br>
+                                <input name="layout" type="radio" ng-model='settingContent' value="new"> Add new Settings<br>
+                            </div>
+                            <div ng-show="settingContent=='existing'" ng-controller="ExistingSettingstCtrl">
+                                <div class="layoutGridStyle" ng-grid="existingSettingsGridOptions"></div>
+                            </div>
+                            <div class="wrapper">
+                                <p ng-show="settingContent == 'Existing'">This is the first content!</p>
+                                <div ng-show="settingContent == 'new'">
+                                    <div>
+                                        <label>Name</label>
+                                        <textarea ng-model="selectedSite.Name"></textarea>
+                                    </div>
+                                    <div>
+                                        <label>SiteId</label>
+                                        <textarea ng-model="selectedSite.SiteId"></textarea>
+                                    </div>
+                                    <div>
+                                        <label>Value</label>
+                                        <textarea ng-model="selectedSite.Value"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <accordion-heading>
+                            Setting <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </accordion-heading>
+                        <!--            <br>-->
+                    </accordion-group>
+                </accordion>
+            </div>
+            <!-- <accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+              {{group.content}}
+            </accordion-group>
+            <accordion-group heading="Dynamic Body Content">
+              <p>The body of the accordion group grows to fit the contents</p>
+                <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
+                <div ng-repeat="item in items">{{item}}</div>
+            </accordion-group>
+            <accordion-group is-open="status.open">
+                <accordion-heading>
+                </accordion-heading>
+                This is just some content to illustrate fancy headings.
+            </accordion-group>
+          </accordion>
+             </div>
+
+                <div>
+            <input name="test" type="radio" ng-model='myModel' value="Left" > Left<br>
+            <input name="test" type="radio" ng-model='myModel' value="Middle" > Middle<br>
+            <input name="test" type="radio" ng-model='myModel' value="Right" > Right<br>
+        </div>
+
+        <hr>
+
+        <buttons-radio class="btn-group" data--->
+            <!--toggle="buttons" model='myModel' options='myOptions'></buttons-radio>-->
+
+
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+
+
+
+            <!--<button type="submit" class="btn btn-success btn-lg btn-block">
+            <span class="glyphicon glyphicon-flash"></span>Submit!
+        </button>-->
+            <!--    <div ng-controller="ModalInstanceCtrl">    <a ng-click="addsite()">add site</a></div>-->
+        </form>
+</div>
+
+
+
+<!--  -->

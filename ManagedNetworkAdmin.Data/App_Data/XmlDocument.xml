@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sputnik.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Sputnik.Data.Models.Apollo.Layout">
+            <summary>
+            A Layout consisting of Head, Header, Footer and Tracking code
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.Name">
+            <summary>
+            The name of this Layout
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.Head">
+            <summary>
+            The Head content (usually for scripts and styles).
+            Anything that can go in the &lt;head&gt; tag
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.Header">
+            <summary>
+            The Header content
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.Footer">
+            <summary>
+            The Footer content
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.Tracking">
+            <summary>
+            The Tracking content
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.ActiveFlag">
+            <summary>
+            Is this Layout active?
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.DeletedFlag">
+            <summary>
+            Is this Layout deleted
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.CreatedOn">
+            <summary>
+            Created date
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.UpdatedOn">
+            <summary>
+            Updated date
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.DeletedOn">
+            <summary>
+            If this Layout was deleted, when?
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Layout.UpdatedBy">
+            <summary>
+            Who made the latest change
+            </summary>
+        </member>
+        <member name="T:Sputnik.Data.Models.Apollo.Site">
+            <summary>
+            Site Model
+            </summary>
+        </member>
+        <member name="M:Sputnik.Data.Models.Apollo.Site.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.LayoutId">
+            <summary>
+            The Layout ID for this Site
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.Hostname">
+            <summary>
+            Hostname
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.Description">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.DefaultLocation">
+            <summary>
+            Default location for this site
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.UseGeoIp">
+            <summary>
+            Does this site use GeoIp?
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.PartnerId">
+            <summary>
+            The Parnter ID associated with this Site (from LC Admin)
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.PartnerSiteId">
+            <summary>
+            The Partner Site ID associated with this site (from LC Admin)
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.ActiveFlag">
+            <summary>
+            Is this site currently Active
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.DeletedFlag">
+            <summary>
+            Has this Site been deleted
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.CreatedOn">
+            <summary>
+            Created date
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.UpdatedOn">
+            <summary>
+            Last updated date
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.DeletedOn">
+            <summary>
+            If deleted, when
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.UpdatedBy">
+            <summary>
+            Who updated this Site last
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.Settings">
+            <summary>
+            Site Settings
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.Site.Layout">
+            <summary>
+            The Site Layout
+            </summary>
+        </member>
+        <member name="T:Sputnik.Data.Models.Apollo.SiteSetting">
+            <summary>
+            Site Settings Model
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.SiteSetting.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.SiteSetting.SiteId">
+            <summary>
+            The Site Id
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.SiteSetting.Name">
+            <summary>
+            The Name of the setting
+            </summary>
+        </member>
+        <member name="P:Sputnik.Data.Models.Apollo.SiteSetting.Value">
+            <summary>
+            The Value of the setting
+            </summary>
+        </member>
+    </members>
+</doc>
