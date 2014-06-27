@@ -14,7 +14,7 @@ namespace ManagedNetworkAdmin.Data.Models.Apollo
         public Site()
         {
             //this.SiteAliases = new HashSet<SiteAlias>();
-            //this.SiteSettings = new HashSet<SiteSetting>();
+            this.SiteSettings = new HashSet<SiteSetting>();
         }
 
         public int Id { get; set; }
@@ -37,7 +37,7 @@ namespace ManagedNetworkAdmin.Data.Models.Apollo
 
         public virtual Layout Layout { get; set; }
         //public virtual ICollection<SiteAlias> SiteAliases { get; set; }
-        //public virtual ICollection<SiteSetting> SiteSettings { get; set; }
+        public virtual ICollection<SiteSetting> SiteSettings { get; set; }
     }
 
 	/// <summary>

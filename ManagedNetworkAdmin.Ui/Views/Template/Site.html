@@ -92,7 +92,8 @@
                         <div class="sitelayout">
                             <div>
                                 <input name="layout" type="radio" ng-model='layoutContent' value="existing"> Select an existing Layout<br>
-                                <input name="layout" type="radio" ng-model='layoutContent' value="new"> Add a new Layout<br>
+                                <input name="layout" type="radio" ng-model='layoutContent' value="new"> Edit Layout<br>
+                                <!--<input name="layout" type="radio" ng-model='layoutContent' value="new"> Add a new Layout<br>-->
                             </div>
                             <div ng-show="layoutContent=='existing'" ng-controller="ExistingLayoutCtrl">
                                 <div class="layoutGridStyle" ng-grid="existingLayoutGridOptions"></div>
@@ -102,19 +103,19 @@
                                 <div ng-show="layoutContent == 'new'">
                                     <div>
                                         <label>Head</label>
-                                        <textarea ng-model="selectedSite.Head"></textarea>
+                                        <textarea ng-model="layoutData.Head"></textarea>
                                     </div>
                                     <div>
                                         <label>Header</label>
-                                        <textarea ng-model="selectedSite.Header"></textarea>
+                                        <textarea ng-model="layoutData.Header"></textarea>
                                     </div>
                                     <div>
                                         <label>Footer</label>
-                                        <textarea ng-model="selectedSite.Footer"></textarea>
+                                        <textarea ng-model="layoutData.Footer"></textarea>
                                     </div>
                                     <div>
                                         <label>Tracking</label>
-                                        <textarea ng-model="selectedSite.Tracking"></textarea>
+                                        <textarea ng-model="layoutData.Tracking"></textarea>
                                     </div>
                                 </div>
 
@@ -135,7 +136,7 @@
                                 <input name="layout" type="radio" ng-model='settingContent' value="existing"> Select existing Settings<br>
                                 <input name="layout" type="radio" ng-model='settingContent' value="new"> Add new Settings<br>
                             </div>
-                            <div ng-show="settingContent=='existing'" ng-controller="ExistingSettingstCtrl">
+                            <div ng-show="settingContent=='existing'" ng-controller="ExistingSettingsCtrl">
                                 <div class="layoutGridStyle" ng-grid="existingSettingsGridOptions"></div>
                             </div>
                             <div class="wrapper">
@@ -143,15 +144,15 @@
                                 <div ng-show="settingContent == 'new'">
                                     <div>
                                         <label>Name</label>
-                                        <textarea ng-model="selectedSite.Name"></textarea>
+                                        <textarea ng-model="settingsData.Name"></textarea>
                                     </div>
                                     <div>
                                         <label>SiteId</label>
-                                        <textarea ng-model="selectedSite.SiteId"></textarea>
+                                        <textarea ng-model="settingsData.SiteId"></textarea>
                                     </div>
                                     <div>
                                         <label>Value</label>
-                                        <textarea ng-model="selectedSite.Value"></textarea>
+                                        <textarea ng-model="settingsData.Value"></textarea>
                                     </div>
                                 </div>
 
@@ -194,7 +195,9 @@
 
 
             <div class="modal-footer">
-                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                <button class="btn btn-info " ng-click="review()">Preview</button>
+                <button class="btn btn-primary" ng-click="addsite()">Submit</button>
+
                 <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
             </div>
 

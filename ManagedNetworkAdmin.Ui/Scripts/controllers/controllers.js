@@ -89,7 +89,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
 
 
 
-.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
+.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'apiService', function ($scope, $modalInstance, apiService) {
     //var items = ['item1', 'item2', 'item3'];
     $scope.myOptions = ["existing", "new"];
     $scope.settingContent = "new";
@@ -124,6 +124,28 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
 
 
 
+    $scope.addsite = function () {
+        alert("test");
+        //$scope.sites.ActiveFlag = true;
+        //$scope.sites.Id = 9999;
+
+        ////$scope.sites.LayoutId = 9999;
+        //$scope.sites.Layout = {Id:"2222"};
+        //$scope.sites.DeletedFlag = true;
+        //$scope.sites.UpdatedBy = 'John';
+        //$scope.sites.UpdatedOn = new Date();
+
+        //apiFactory.addSite($scope.sites).success(successPostCallback).error(errorCallback);
+        //apiService.addsite($scope.sites)
+        apiService.addsite($scope.selectedSite)
+            .then(function (data) {
+                $scope.myData = data;
+            }, function (error) {
+                alert("error");
+            });
+    }
+
+
 
     $scope.ok = function () {
         $modalInstance.close($scope.selected.item);
@@ -135,7 +157,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
 }])
     .controller('LayoutAccordion', function ($scope) {
         $scope.oneAtATime = true;
-
+        $scope.layoutData = $scope.selectedSite.Layout;;
         $scope.groups = [
           {
               title: 'Dynamic Group Header - 1',
@@ -162,7 +184,8 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
 
     .controller('ExistingLayoutCtrl', function ($scope, $http, $modal, apiService, $location, $window) {
         $scope.layout = {};
-        $scope.layoutData = [];
+        //$scope.layoutData = [];
+        $scope.layoutData = $scope.selectedSite.Layout;
         //$scope.myData = [{name: "Moroni", age: 50},
         //           {name: "Tiancum", age: 43},
         //            {name: "Jacob", age: 27},
@@ -170,9 +193,11 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
         //            {name: "Enos", age: 34}];
         $scope.existingLayoutGridOptions =
             {
+                                showSelectionCheckbox: true,
+
                 data: 'layoutData',
                 selectedItems: $scope.elGridSelections,
-                multiSelect: true,
+                multiSelect: false,
                 afterSelectionChange: function () {
                     $scope.sites.Layout = $scope.elGridSelections[0];
                 },
@@ -189,7 +214,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
                     { field: "Head" },
                     { field: "Header" },
                     { field: "Footer" },
-                    { displayName: 'Select', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Select</button> ' },
+                    //{ displayName: 'Select', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Select</button> ' },
                 ]
             };
 
@@ -297,15 +322,18 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
           };
       })
 
-    .controller('ExistingSettingstCtrl', function ($scope, $http, $modal, apiService, $location, $window) {
-        $scope.settingsData = [];
+    .controller('ExistingSettingsCtrl', function ($scope, $http, $modal, apiService, $location, $window) {
+        //$scope.settingsData = [];
+        $scope.settingsData = $scope.selectedSite.SiteSettings;
         $scope.existingSettingsGridOptions =
             {
+                //showSelectionCheckbox: true,
+
                 data: 'settingsData',
                 selectedItems: $scope.elGridSelections,
                 multiSelect: true,
                 afterSelectionChange: function () {
-                    $scope.sites.Settings = $scope.elGridSelections[0];
+                    $scope.sites.Settings = $scope.elGridSelections;
                 },
                 jqueryUITheme: true,
                 enableCellSelection: true,
@@ -315,23 +343,24 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
                     { field: "Id" },
                     { field: "Name", pinned: true },
                     { field: "SiteId" },
-                    { field: "Value" },
-                    { displayName: 'Select', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Select</button> ' },
+                    { field: "Value", enableCellEdit: true, cellEditTemplate: '<input type="checkbox" ng-model="row.entity.Active" >' },
+                    //{ field: "Value", enableCellEdit: true, cellEditTemplate: '<input type="checkbox" ng-checked="row.entity.value==\'on\'" ng-input="COL_FIELD" ' },
+                    //{ displayName: 'Select', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Select</button> ' },
                 ]
             };
 
 
         //Perform the initialization
-        init();
+        //init();
 
-        function init() {
-            apiService.getsitesettings()
-                .then(function (result) {
-                    $scope.settingsData = result;
-                }, function (error) {
-                    alert("error");
-                });
-        }
+        //function init() {
+        //    apiService.getsitesettings()
+        //        .then(function (result) {
+        //            $scope.settingsData = result;
+        //        }, function (error) {
+        //            alert("error");
+        //        });
+        //}
 
 
         $scope.items = ['item1', 'item2', 'item3'];
@@ -466,29 +495,57 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
 
         $scope.items = ['item1', 'item2', 'item3'];
 
-        $scope.addsite = function () {
-            alert("test");
-            $scope.sites = $scope.selectedSite;
-            $scope.sites.ActiveFlag = true;
-            $scope.sites.Id = 9999;
-            //$scope.sites.Layout = $scope.elGridSelections;
-            //$scope.sites.LayoutId = $scope.elGridSelections.LayoutId;
-            //$scope.sites.Layout = { Id: "2222" };
-            $scope.sites.DeletedFlag = true;
-            $scope.sites.UpdatedBy = 'test';
-            $scope.sites.UpdatedOn = new Date();
+        //$scope.addsite = function () {
+        //    alert("test");
+        //    $scope.sites = $scope.selectedSite;
+        //    $scope.sites.ActiveFlag = true;
+        //    $scope.sites.Id = 9999;
+        //    //$scope.sites.Layout = $scope.elGridSelections;
+        //    //$scope.sites.LayoutId = $scope.elGridSelections.LayoutId;
+        //    //$scope.sites.Layout = { Id: "2222" };
+        //    $scope.sites.DeletedFlag = true;
+        //    $scope.sites.UpdatedBy = 'test';
+        //    $scope.sites.UpdatedOn = new Date();
 
-            //apiFactory.addSite($scope.sites).success(successPostCallback).error(errorCallback);
-            apiService.addsite($scope.sites)
-                .then(function (data) {
-                    $scope.sitesData = data;
-                }, function (error) {
-                    alert("error");
-                });
-        }
+        //    //apiFactory.addSite($scope.sites).success(successPostCallback).error(errorCallback);
+        //    apiService.addsite($scope.sites)
+        //        .then(function (data) {
+        //            $scope.sitesData = data;
+        //        }, function (error) {
+        //            alert("error");
+        //        });
+        //}
 
 
 
+        $scope.addSite = function (site) {
+
+            var modalInstance = $modal.open({
+                templateUrl: '/views/Template/Site.html',
+                controller: 'ModalInstanceCtrl',
+                backdrop: 'static',
+                scope: $scope,
+                resolve: {
+                    //'selectedSite': function () { return $scope.selectedSite; },
+                    'selectedSite': function () { return angular.copy(site); },
+                    //'apiservice': function() { return $scope.apiservice; }
+                }
+                //resolve: { club: function () { return angular.copy(club); }, isNew: function () { return false; } },
+                //size: size,
+                //resolve: {
+                //    items: function () {
+                //        return $scope.items;
+                //    }
+                //}
+            });
+
+            $scope.selectedSite = site;
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                //$log.info('Modal dismissed at: ' + new Date());
+            });
+        };
         $scope.editSite = function (site) {
 
             var modalInstance = $modal.open({

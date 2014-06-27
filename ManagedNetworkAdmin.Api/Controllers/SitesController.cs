@@ -46,7 +46,7 @@ namespace ManagedNetworkAdmin.Api.Controllers
         [AcceptVerbs("GET", "POST")]
         public IEnumerable<Site> Get()
         {
-            //System.Diagnostics.Debugger.Launch();
+            System.Diagnostics.Debugger.Launch();
 
             IList<Site> sts = new List<Site>();
             Layout lo = new Layout { ActiveFlag = true, Id = 1, Name = "layout name1", Footer = "footer 1", Head = "head 1", Header = "header 1" };
@@ -55,12 +55,15 @@ namespace ManagedNetworkAdmin.Api.Controllers
 
             //return sts as IEnumerable<Site>;
             ////System.Diagnostics.Debugger.Launch();
-            if (!redis.ContainsKey(CacheKey("sitelist")))
+            if (!redis.ContainsKey(CacheKey("sites")))
             {
                 //redis.Remove(CacheKey("sitelist"));
-                redis.Add(CacheKey("sitelist"), ContextApollo.Sites.Include("SiteSettings").Include("Layout").AsEnumerable());
+                redis.Add(CacheKey("sites"), ContextApollo.Sites.Include("SiteSettings").Include("Layout").AsEnumerable());
             }
-            return redis.Get<IEnumerable<Site>>(CacheKey("sitelist"));
+            return redis.Get<IEnumerable<Site>>(CacheKey("sites"));
+            //sts = ContextApollo.Sites.Include("SiteSettings").Include("Layout").ToList();
+            sts = ContextApollo.Sites.ToList();
+            return sts as IEnumerable<Site>;
         }
 
         /// <summary>
@@ -72,7 +75,7 @@ namespace ManagedNetworkAdmin.Api.Controllers
         [AcceptVerbs("GET", "POST", "PUT")]
         public HttpResponseMessage Add(Site site)
         {
-            //System.Diagnostics.Debugger.Launch();
+            System.Diagnostics.Debugger.Launch();
 
             using (var context = new ApolloContext())
             {
@@ -169,9 +172,10 @@ namespace ManagedNetworkAdmin.Api.Controllers
             //return st;
 
 
-            if (!redis.ContainsKey(CacheKey(id.ToString())))
-                redis.Add<Site>(CacheKey(id.ToString()), ContextApollo.Sites.Include("Settings").Include("Layout").AsQueryable().FirstOrDefault(s => s.Id == id));
-            return redis.Get<Site>(CacheKey(id.ToString()));
+            //if (!redis.ContainsKey(CacheKey(id.ToString())))
+            //    redis.Add<Site>(CacheKey(id.ToString()), ContextApollo.Sites.Include("Settings").Include("Layout").AsQueryable().FirstOrDefault(s => s.Id == id));
+            //return redis.Get<Site>(CacheKey(id.ToString()));
+            return ContextApollo.Sites.Include("Settings").Include("Layout").AsQueryable().FirstOrDefault(s => s.Id == id);
 
         }
 
