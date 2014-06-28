@@ -501,6 +501,13 @@
             <param name="site">A Site</param>
             <returns>HttpResponseMessage</returns>
         </member>
+        <member name="M:ManagedNetworkAdmin.Api.Controllers.SitesController.Update(ManagedNetworkAdmin.Data.Models.Apollo.Site)">
+            <summary>
+            Add a new Site
+            </summary>
+            <param name="site">A Site</param>
+            <returns>HttpResponseMessage</returns>
+        </member>
         <member name="M:ManagedNetworkAdmin.Api.Controllers.SitesController.GetById(System.Int32)">
             <summary>
             Get a site and it's settings by Id

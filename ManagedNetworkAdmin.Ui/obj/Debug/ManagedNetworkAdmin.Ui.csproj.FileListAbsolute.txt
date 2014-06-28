@@ -1,4 +1,3 @@
-D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\bin\App.ManagedNetworkAdmin.Ui.dll.config
 D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\bin\App.ManagedNetworkAdmin.Ui.dll
 D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\bin\App.ManagedNetworkAdmin.Ui.pdb
 D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\bin\Antlr3.Runtime.dll
@@ -76,3 +75,4 @@ D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\bin\zh-Hant\
 D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\obj\Debug\ManagedNetworkAdmin.Ui.csprojResolveAssemblyReference.cache
 D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\obj\Debug\App.ManagedNetworkAdmin.Ui.dll
 D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\obj\Debug\App.ManagedNetworkAdmin.Ui.pdb
+D:\Source\Git_SourceTree\ManagedNetworkAdmin\ManagedNetworkAdmin.Ui\bin\App.ManagedNetworkAdmin.Ui.dll.config

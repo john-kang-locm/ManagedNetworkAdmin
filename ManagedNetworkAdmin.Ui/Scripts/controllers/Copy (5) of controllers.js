@@ -144,10 +144,10 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
         $scope.existingLayoutGridOptions =
             {
                 data: 'layoutData',
-                selectedItems: $scope.elGridSelections,
+                selectedItems: $scope.selectedLayout,
                 multiSelect: true,
                 afterSelectionChange: function () {
-                    $scope.sites.Layout = $scope.elGridSelections[0];
+                    $scope.sites.Layout = $scope.selectedLayout;
                 },
                 jqueryUITheme: true,
                 enableCellSelection: true,
@@ -262,7 +262,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
     })
     .controller('HomeCtrl', function ($scope, $http, $modal, apiService, apiFactory, $location, $window) {
         $scope.selectedSite = {};
-        $scope.elGridSelections = [];
+        $scope.selectedLayout = [];
 
         $scope.sites = {};
         //$scope.sites.Layout = {};
@@ -335,8 +335,8 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
             $scope.sites = $scope.selectedSite;
             $scope.sites.ActiveFlag = true;
             $scope.sites.Id = 9999;
-            //$scope.sites.Layout = $scope.elGridSelections;
-            //$scope.sites.LayoutId = $scope.elGridSelections.LayoutId;
+            //$scope.sites.Layout = $scope.selectedLayout;
+            //$scope.sites.LayoutId = $scope.selectedLayout.LayoutId;
             //$scope.sites.Layout = { Id: "2222" };
             $scope.sites.DeletedFlag = true;
             $scope.sites.UpdatedBy = 'test';

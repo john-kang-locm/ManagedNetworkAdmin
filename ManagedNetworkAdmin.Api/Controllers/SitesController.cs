@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -46,7 +47,7 @@ namespace ManagedNetworkAdmin.Api.Controllers
         [AcceptVerbs("GET", "POST")]
         public IEnumerable<Site> Get()
         {
-            System.Diagnostics.Debugger.Launch();
+            //System.Diagnostics.Debugger.Launch();
 
             IList<Site> sts = new List<Site>();
             Layout lo = new Layout { ActiveFlag = true, Id = 1, Name = "layout name1", Footer = "footer 1", Head = "head 1", Header = "header 1" };
@@ -114,6 +115,79 @@ namespace ManagedNetworkAdmin.Api.Controllers
                                 st.DisplayName = site.DisplayName;
                             }
                             //ContextApollo.Entry(layout).State = System.Data.EntityState.Added;
+                            context.SaveChanges();
+                            dbContextTransaction.Commit();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        dbContextTransaction.Rollback();
+                        return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                    }
+                    return new HttpResponseMessage(HttpStatusCode.Created);
+                }
+            }
+
+
+            //if (site != null)
+            //{
+            //    site.CreatedOn = site.UpdatedOn = DateTime.Now;
+            //    site.UpdatedBy = "ManagedNetworkAdmin api";
+            //    Layout layout = new Layout {  Name = "test" , ActiveFlag=true, DeletedFlag=false};
+            //    layout.CreatedOn = layout.UpdatedOn = DateTime.Now;
+            //    layout.UpdatedBy = "ManagedNetworkAdmin api";
+
+
+            //    ContextApollo.Layouts.Add(layout);
+
+            //    //ContextApollo.Sites.Add(site);
+            //    //ContextApollo.Entry(layout).State = System.Data.EntityState.Added;
+            //    int status = ContextApollo.SaveChanges();
+            //    return new HttpResponseMessage(HttpStatusCode.Created);
+            //}
+
+        }
+
+        /// <summary>
+        /// Add a new Site
+        /// </summary>
+        /// <param name="site">A Site</param>
+        /// <returns>HttpResponseMessage</returns>
+        //[HttpPost]
+        [AcceptVerbs("GET", "POST", "PUT")]
+        public HttpResponseMessage Update(Site site)
+        {
+            System.Diagnostics.Debugger.Launch();
+
+            using (var context = new ApolloContext())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (site != null)
+                        {
+
+                            //Layout layout =
+                            //    context.Layouts.AsNoTracking().Where(l => l.Id == site.Layout.Id).FirstOrDefault();
+                            //if (layout!=null)
+                            //{
+                            //    layout = site.Layout;
+                            //    context.Entry(layout).State = System.Data.Entity.EntityState.Modified;
+                            //}
+
+                            if (site.Layout.Id == site.LayoutId)
+                                context.Layouts.Add(site.Layout);
+                            else
+                                site.LayoutId = site.Layout.Id;
+
+                            Site st = context.Sites.AsNoTracking().Where(s => s.Id == site.Id).FirstOrDefault();
+                            if (st != null)
+                            {
+                                st = site;
+                                context.Entry(st).State = System.Data.Entity.EntityState.Modified;
+                            }
+                            //context.Sites.Attach(st);
                             context.SaveChanges();
                             dbContextTransaction.Commit();
                         }

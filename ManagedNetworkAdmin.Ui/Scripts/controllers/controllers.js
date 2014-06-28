@@ -1,8 +1,8 @@
 ﻿'use strict';
 
-angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.factories', 'app.directives', 'app.services', 'ui.bootstrap'])
+angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.factories', 'app.directives', 'app.services', 'ui.bootstrap'])
 
-.controller('SiteController', ['$scope', '$modal', 'apiService', 'sitesManager', function ($scope,$modal, apiService, sitesManager) {
+.controller('SiteController', ['$scope', '$modal', 'apiService', 'sitesManager', function ($scope, $modal, apiService, sitesManager) {
 
     $scope.homeGridOptions =
         {
@@ -80,7 +80,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
     //    return $scope.getSites();
     //})
 
- 
+
 
     //$scope.getSites();
 
@@ -137,7 +137,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
 
         //apiFactory.addSite($scope.sites).success(successPostCallback).error(errorCallback);
         //apiService.addsite($scope.sites)
-        apiService.addsite($scope.selectedSite)
+        apiService.updatesite($scope.selectedSite)
             .then(function (data) {
                 $scope.myData = data;
             }, function (error) {
@@ -193,13 +193,14 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
         //            {name: "Enos", age: 34}];
         $scope.existingLayoutGridOptions =
             {
-                                showSelectionCheckbox: true,
+                showSelectionCheckbox: true,
 
                 data: 'layoutData',
-                selectedItems: $scope.elGridSelections,
+                selectedItems: $scope.selectedLayout,
                 multiSelect: false,
                 afterSelectionChange: function () {
-                    $scope.sites.Layout = $scope.elGridSelections[0];
+                    $scope.selectedSite.Layout = $scope.selectedLayout[0];
+                    //$scope.selectedSite.LayoutId = $scope.selectedSite.Layout[0].Id;
                 },
                 jqueryUITheme: true,
                 enableCellSelection: true,
@@ -214,6 +215,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
                     { field: "Head" },
                     { field: "Header" },
                     { field: "Footer" },
+                    { field: "Tracking" },
                     //{ displayName: 'Select', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Select</button> ' },
                 ]
             };
@@ -330,10 +332,10 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
                 //showSelectionCheckbox: true,
 
                 data: 'settingsData',
-                selectedItems: $scope.elGridSelections,
+                selectedItems: $scope.selectedLayout,
                 multiSelect: true,
                 afterSelectionChange: function () {
-                    $scope.sites.Settings = $scope.elGridSelections;
+                    $scope.sites.Settings = $scope.selectedLayout;
                 },
                 jqueryUITheme: true,
                 enableCellSelection: true,
@@ -427,7 +429,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
 
     .controller('HomeCtrl', function ($scope, $http, $modal, apiService, apiFactory, $location, $window) {
         $scope.selectedSite = {};
-        $scope.elGridSelections = [];
+        $scope.selectedLayout = [];
 
         $scope.sites = {};
         //$scope.sites.Layout = {};
@@ -500,8 +502,8 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize','app.models', 'app.fac
         //    $scope.sites = $scope.selectedSite;
         //    $scope.sites.ActiveFlag = true;
         //    $scope.sites.Id = 9999;
-        //    //$scope.sites.Layout = $scope.elGridSelections;
-        //    //$scope.sites.LayoutId = $scope.elGridSelections.LayoutId;
+        //    //$scope.sites.Layout = $scope.selectedLayout;
+        //    //$scope.sites.LayoutId = $scope.selectedLayout.LayoutId;
         //    //$scope.sites.Layout = { Id: "2222" };
         //    $scope.sites.DeletedFlag = true;
         //    $scope.sites.UpdatedBy = 'test';
