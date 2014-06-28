@@ -32,11 +32,11 @@
                 </div>
                 <div>
                     <label>Default State</label>
-                    <select ng-model="selectedSite.Defaultstate"></select>
+                    <select ng-model="selectedSite.Defaultstate" ng-options="state.short for state in states"></select>
                 </div>
                 <div>
                     <label>Geoip</label>
-                    <input type="checkbox" ng-model="selectedSite.Geoip" />
+                    <input type="checkbox" ng-model="selectedSite.UseGeoIp" />
                 </div>
                 <div>
                     <label>Partner Id</label>
@@ -92,7 +92,7 @@
                         <div class="sitelayout">
                             <div>
                                 <input name="layout" type="radio" ng-model='layoutContent' value="existing"> Select an existing Layout<br>
-                                <input name="layout" type="radio" ng-model='layoutContent' value="new"> Edit Layout<br>
+                                <input name="layout" type="radio" ng-checked="true" ng-model="layoutContent" value="new" ng-init="checked=true"> Edit Layout<br>
                                 <!--<input name="layout" type="radio" ng-model='layoutContent' value="new"> Add a new Layout<br>-->
                             </div>
                             <div ng-show="layoutContent=='existing'" ng-controller="ExistingLayoutCtrl">
@@ -132,14 +132,17 @@
                 <accordion close-others="oneAtATime">
                     <accordion-group is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
                         <div class="sitelayout">
-                            <div>
+                            <!--<div>
                                 <input name="layout" type="radio" ng-model='settingContent' value="existing"> Select existing Settings<br>
                                 <input name="layout" type="radio" ng-model='settingContent' value="new"> Add new Settings<br>
-                            </div>
-                            <div ng-show="settingContent=='existing'" ng-controller="ExistingSettingsCtrl">
+                            </div>-->
+                            <div   ng-controller="ExistingSettingsCtrl">
                                 <div class="layoutGridStyle" ng-grid="existingSettingsGridOptions"></div>
                             </div>
-                            <div class="wrapper">
+                            <!--<div ng-show="settingContent=='existing'" ng-controller="ExistingSettingsCtrl">
+                                <div class="layoutGridStyle" ng-grid="existingSettingsGridOptions"></div>
+                            </div>-->
+                            <!--<div class="wrapper">
                                 <p ng-show="settingContent == 'Existing'">This is the first content!</p>
                                 <div ng-show="settingContent == 'new'">
                                     <div>
@@ -156,7 +159,7 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div>-->
                         </div>
                         <accordion-heading>
                             Setting <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>

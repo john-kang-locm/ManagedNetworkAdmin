@@ -91,8 +91,13 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
 
 .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'apiService', function ($scope, $modalInstance, apiService) {
     //var items = ['item1', 'item2', 'item3'];
+
+    $scope.states = [{ short: 'CA', long: 'California' },
+{ short: 'TX', long: 'Texax' },
+{ short: 'NY', long: 'Newyork' },
+];
     $scope.myOptions = ["existing", "new"];
-    $scope.settingContent = "new";
+    //$scope.settingContent = "new";
     $scope.layoutContent = "new";
     $scope.test3 = $scope.selectedSite;
     $scope.test4 = $scope.$parent.selectedSite;
@@ -125,7 +130,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
 
 
     $scope.addsite = function () {
-        alert("test");
+        //alert("test");
         //$scope.sites.ActiveFlag = true;
         //$scope.sites.Id = 9999;
 
@@ -143,12 +148,15 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
             }, function (error) {
                 alert("error");
             });
+
+        $scope.ok();
     }
 
 
 
     $scope.ok = function () {
-        $modalInstance.close($scope.selected.item);
+        //$modalInstance.close($scope.selected.item);
+        $modalInstance.close();
     };
 
     $scope.cancel = function () {
@@ -332,10 +340,10 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
                 //showSelectionCheckbox: true,
 
                 data: 'settingsData',
-                selectedItems: $scope.selectedLayout,
+                selectedItems: $scope.selectedSettings,
                 multiSelect: true,
                 afterSelectionChange: function () {
-                    $scope.sites.Settings = $scope.selectedLayout;
+                    $scope.selectedSite.Settings = $scope.selectedSettings;
                 },
                 jqueryUITheme: true,
                 enableCellSelection: true,
@@ -345,7 +353,8 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
                     { field: "Id" },
                     { field: "Name", pinned: true },
                     { field: "SiteId" },
-                    { field: "Value", enableCellEdit: true, cellEditTemplate: '<input type="checkbox" ng-model="row.entity.Active" >' },
+                    { field: "Value", enableCellEdit: true}
+                    //{ field: "Value", enableCellEdit: true, cellEditTemplate: '<input type="checkbox" ng-model="row.entity.Active" >' },
                     //{ field: "Value", enableCellEdit: true, cellEditTemplate: '<input type="checkbox" ng-checked="row.entity.value==\'on\'" ng-input="COL_FIELD" ' },
                     //{ displayName: 'Select', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Select</button> ' },
                 ]

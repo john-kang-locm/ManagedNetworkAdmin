@@ -187,6 +187,17 @@ namespace ManagedNetworkAdmin.Api.Controllers
                                 st = site;
                                 context.Entry(st).State = System.Data.Entity.EntityState.Modified;
                             }
+
+                            foreach (var setting in site.SiteSettings)
+                            {
+                                SiteSetting ss =
+                                    context.SiteSettings.AsNoTracking()
+                                        .Where(s => s.Id == setting.Id)
+                                        .FirstOrDefault();
+                                ss.Value = setting.Value;
+                                context.Entry(ss).State = System.Data.Entity.EntityState.Modified;
+                            }
+
                             //context.Sites.Attach(st);
                             context.SaveChanges();
                             dbContextTransaction.Commit();
