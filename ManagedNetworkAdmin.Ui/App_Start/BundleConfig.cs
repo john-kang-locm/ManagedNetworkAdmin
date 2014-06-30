@@ -17,7 +17,6 @@ namespace App.ManagedNetworkAdmin.Ui
             bundles.Add(new ScriptBundle("~/js/jquery").Include("~/scripts/vendor/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/js/app").Include(
-                "~/scripts/vendor/angular-ui/ui-bootstrap-tpls-0.11.0.js",
                 //"~/scripts/vendor/angular-ui/ui-bootstrap.js",
                 //"~/scripts/vendor/angular.js",
                 "~/scripts/vendor/angular-route.js",
@@ -26,6 +25,13 @@ namespace App.ManagedNetworkAdmin.Ui
                 "~/scripts/vendor/angular-sanitize.js",
                 "~/scripts/vendor/angular-animate.js",
                 "~/scripts/vendor/ng-grid.js",
+
+                "~/scripts/vendor/angular-ui/ui-bootstrap-tpls-0.11.0.js",
+                "~/scripts/vendor/textAngular/textAngular.js",
+                "~/scripts/vendor/textAngular/textAngular-sanitize.js",
+                "~/scripts/vendor/textAngular/textAngularSetup.js",
+
+
                 "~/scripts/modules/sitemodule.js",
                 "~/scripts/filters/filters.js",
                 "~/scripts/factories/factories.js",

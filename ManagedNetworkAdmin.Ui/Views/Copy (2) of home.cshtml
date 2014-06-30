@@ -1,0 +1,65 @@
+﻿@{ 
+
+    PageData["title"] = "Managed Network Admin | Home";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+
+
+
+<body >
+
+
+    <div class="homeMiddle" ng-app="app" ng-controller="HomeCtrl">
+
+<!--  <div class="bar">
+        <input type="text" ng-model="searchString" placeholder="Enter your search terms" />
+    </div>
+
+    <ul>
+        <li ng-repeat="i in items | searchFor:searchString">
+            <a href="{{i.url}}">
+                <img ng-src="{{i.image}}" /></a>
+            <p>{{i.title}}</p>
+        </li>
+    </ul>
+-->
+
+@*    <input type="text" ng-model="filterOptions.filterText" class="search-query" placeholder="Filter">*@
+<strong>Search:</strong> </string><input type="text" ng-model="filterOptions.filterText" />
+
+<span style="float:right" ><a href="/site">Add site</a></span>      
+
+
+        <div class="siteGridStyle" ng-grid="homeGridOptions"></div>
+@*        <p ng-bind-html="test"></p>*@
+        
+        @*<iframe ng-src="{{test}}"> </iframe>
+        *@
+         @*<div ng-bind-html="test"></div>
+        *@
+    </div>
+    @*<div class="row">
+        <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="login(userName, password)">
+            <h2 class="text-center">Home</h2>
+            <div class="form-box">
+                <div class="form-group">
+                    <input ng-model="userName" type="text" class="form-control" placeholder="Username or Email" required autofocus />
+                </div>
+                <div class="form-group">
+                    <input ng-model="password" type="password" class="form-control" placeholder="Password" required />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit" ng-disabled="!(userName && password)" disabled>Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    *@
+</body>
+
+</html>

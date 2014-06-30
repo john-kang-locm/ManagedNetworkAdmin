@@ -11,16 +11,17 @@
 <body>
     <header class="navbar navbar-default" role="banner" ng-if=" !layout ">
 
-        <div class="container">
-            <div class="navbar-left">
+        <div class="container ">
+@*            <div class="navbar-left">*@
+            <div class="sitelayoutcenter">
                 <h3>Managed Network Admin</h3>
             </div>
             <div class="navbar-right" style="vertical-align: middle; margin-top: 20px">
-                <div ng-controller="SearchCtrl">
+@*                <div ng-controller="SearchCtrl">
                     <form class="form-search">
                         <input type="text" ng-model="keywords" ng-click="search()" class="input-medium search-query" placeholder="Search..."><img src="~/Images/searchButton.png" /></input>
                     </form>
-                </div>
+                </div>*@
             </div>
         </div>
      @*   <div ng-app="app.directives">     
@@ -62,7 +63,7 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script> 
     @Scripts.Render("~/js/app")
     @*@Scripts.Render("~/js/app")*@
     <!--

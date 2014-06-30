@@ -51,10 +51,18 @@ namespace ManagedNetworkAdmin.Api.Controllers
 
             IList<Site> sts = new List<Site>();
             Layout lo = new Layout { ActiveFlag = true, Id = 1, Name = "layout name1", Footer = "footer 1", Head = "head 1", Header = "header 1" };
-            Site st = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " loc aaa", Description = "desc aaa", DisplayName = "dis aaa", Hostname = "host aaa", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
-            sts.Add(st);
+            Site st1 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lovxcvc1 aaa", Description = "desc11 aaa", DisplayName = "dis51 aaa", Hostname = "ho55st aaa", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
+            sts.Add(st1);
+            Site st2 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lxvcoc2 bbb", Description = "desc22 bbb", DisplayName = "di64 bbb", Hostname = "hos345t bbb", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
+            sts.Add(st2);
+            Site st3 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lo42c3 ccc", Description = "desc33 ccc", DisplayName = "di2423s ccc", Hostname = "hos63t ccc", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
+            sts.Add(st3);
+            Site st4 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lo234c4 ddd", Description = "desc44 ddd", DisplayName = "dirfss ddd", Hostname = "hotrst ddd", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
+            sts.Add(st4);
+            Site st5 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lo65c5 eee", Description = "desc55 eee", DisplayName = "dsfs4442is eee", Hostname = "hosryt eee", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
+            sts.Add(st5);
 
-            //return sts as IEnumerable<Site>;
+            return sts as IEnumerable<Site>;
             ////System.Diagnostics.Debugger.Launch();
             if (!redis.ContainsKey(CacheKey("sites")))
             {

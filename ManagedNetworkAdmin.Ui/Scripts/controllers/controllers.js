@@ -4,8 +4,62 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
 
 .controller('SiteController', ['$scope', '$modal', 'apiService', 'sitesManager', function ($scope, $modal, apiService, sitesManager) {
 
+
+    //====
+
+    $scope.filterOptions = {
+        filterText: "",
+        //useExternalFilter: true
+    };
+    //$scope.pagingOptions = {
+    //    pageSizes: [250, 500, 1000],
+    //    pageSize: 250,
+    //    totalServerItems: 0,
+    //    currentPage: 1
+    //};
+    //$scope.setPagingData = function (data, page, pageSize) {
+    //    var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+    //    $scope.myData = pagedData;
+    //    $scope.pagingOptions.totalServerItems = data.length;
+    //    if (!$scope.$$phase) {
+    //        $scope.$apply();
+    //    }
+    //};
+    //$scope.getPagedDataAsync = function (pageSize, page, searchText) {
+    //    setTimeout(function () {
+    //        var data;
+    //        if (searchText) {
+    //            var ft = searchText.toLowerCase();
+    //            $http.get('largeLoad.json').success(function (largeLoad) {
+    //                data = largeLoad.filter(function (item) {
+    //                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+    //                });
+    //                $scope.setPagingData(data, page, pageSize);
+    //            });
+    //        } else {
+    //            $http.get('largeLoad.json').success(function (largeLoad) {
+    //                $scope.setPagingData(largeLoad, page, pageSize);
+    //            });
+    //        }
+    //    }, 100);
+    //};
+
+    //$scope.myData = $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+    //$scope.$watch('pagingOptions', function () {
+    //    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+    //}, true);
+    //$scope.$watch('filterOptions', function () {
+    //    $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+    //}, true);
+
+
+    //====
     $scope.homeGridOptions =
         {
+            //enablePaging: true,
+            //pagingOptions: $scope.pagingOptions,
+            filterOptions: $scope.filterOptions,
             data: 'sites',
             enableCellSelection: true,
             enableRowSelection: true,
@@ -460,9 +514,79 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
         //            {name: "Jacob", age: 27},
         //              {name: "Nephi", age: 29},
         //            {name: "Enos", age: 34}];
+
+        //$scope.filterOptions = {
+        //    filterText: ''
+        //    //useExternalFilter: true
+        //};
+        //$scope.filterOptions = {
+        //    filterText: ''
+        //};
+
+
+        $scope.filterOptions = {
+            filterText: "",
+            useExternalFilter: true
+        };
+        $scope.totalServerItems = 0;
+        $scope.pagingOptions = {
+            pageSizes: [2, 5, 10],
+            pageSize: 2,
+            currentPage: 1
+        };
+        $scope.setPagingData = function (data, page, pageSize) {
+            var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+            $scope.sitesData = pagedData;
+            $scope.totalServerItems = data.length;
+            if (!$scope.$$phase) {
+                $scope.$apply();
+            }
+        };
+        $scope.getPagedDataAsync = function (pageSize, page, searchText) {
+            setTimeout(function () {
+                //var data;
+                var urlBase = 'http://localhost:8002/api/v1/';
+
+                if (searchText) {
+                    var ft = searchText.toLowerCase();
+                    $http.get(urlBase + 'Sites/Get').success(function (largeLoad) {
+                        $scope.sitesData = largeLoad.filter(function (item) {
+                            return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
+                        });
+                        $scope.setPagingData(data, page, pageSize);
+                    });
+                } else {
+                    $http.get(urlBase + 'Sites/Get').success(function (largeLoad) {
+                        $scope.setPagingData(largeLoad, page, pageSize);
+                    });
+                }
+            }, 100);
+        };
+
+        $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
+
+        $scope.$watch('pagingOptions', function (newVal, oldVal) {
+            if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
+                $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+            }
+        }, true);
+        $scope.$watch('filterOptions', function (newVal, oldVal) {
+            if (newVal !== oldVal) {
+                $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
+            }
+        }, true);
+
         $scope.homeGridOptions =
             {
                 data: 'sitesData',
+                filterOptions: $scope.filterOptions,
+
+
+                enablePaging: true,
+                showFooter: true,
+                totalServerItems: 'totalServerItems',
+                pagingOptions: $scope.pagingOptions,
+
                 enableCellSelection: true,
                 enableRowSelection: true,
                 //enableCellEditOnFocus: true,
@@ -492,16 +616,16 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
 
 
         //Perform the initialization
-        init();
+        //init();
 
-        function init() {
-            apiService.getsites()
-                .then(function (data) {
-                    $scope.sitesData = data;
-                }, function (error) {
-                    alert("error");
-                });
-        }
+        //function init() {
+        //    apiService.getsites()
+        //        .then(function (data) {
+        //            $scope.sitesData = data;
+        //        }, function (error) {
+        //            alert("error");
+        //        });
+        //}
 
 
         $scope.items = ['item1', 'item2', 'item3'];
