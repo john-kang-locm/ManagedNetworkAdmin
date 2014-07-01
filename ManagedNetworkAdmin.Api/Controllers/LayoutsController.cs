@@ -39,9 +39,9 @@ namespace ManagedNetworkAdmin.Api.Controllers
         {
             //System.Diagnostics.Debugger.Launch();
 
-            IList<Layout> los = new List<Layout>();
-            Layout lo = new Layout { ActiveFlag = true, Id = 1, Name = "layout name1", Footer = "footer 1", Head = "head 1", Header = "header 1" };
-            los.Add(lo);
+            //IList<Layout> los = new List<Layout>();
+            //Layout lo = new Layout { ActiveFlag = true, Id = 1, Name = "layout name1", Footer = "footer 1", Head = "head 1", Header = "header 1" };
+            //los.Add(lo);
 
             return ContextApollo.Layouts.AsEnumerable();
         }

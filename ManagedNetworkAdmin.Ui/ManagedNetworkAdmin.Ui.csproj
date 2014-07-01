@@ -610,12 +610,16 @@
     <Content Include="Views\Partials\Site.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Partials\copy of Home.cshtml" />
-    <Content Include="Views\home.cshtml" />
+    <Content Include="Views\home_bk1.cshtml" />
     <Content Include="Views\Site.cshtml" />
     <Content Include="Views\Copy of Home.cshtml" />
     <Content Include="Views\Partials\Home.html" />
     <Content Include="Views\Copy %282%29 of home.cshtml" />
     <Content Include="Views\demo2.cshtml" />
+    <Content Include="Views\home - Copy.cshtml" />
+    <Content Include="Views\home.cshtml" />
+    <Content Include="Views\home_bk1 - Copy.cshtml" />
+    <Content Include="Views\home - Copy %282%29.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -33,8 +33,8 @@ angular.module('league.club', [
           { field: 'name', displayName: 'Club Name' },
           { field: 'contact_officer', displayName: 'Contact Officer' },
           { displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Edit</button> ' },
-          { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteClub(row.entity)" >Delete</button> ' },
-          { displayName: 'Show Teams', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="showTeams(row.entity)" >Show Teams</button> ' }
+          { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteSite(row.entity)" >Delete</button> ' },
+          { displayName: 'Show Teams', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="activateSite(row.entity)" >Show Teams</button> ' }
         ],
         multiSelect: false
     };
@@ -59,7 +59,7 @@ angular.module('league.club', [
         });
     };
 
-    $scope.deleteClub = function (club) {
+    $scope.deleteSite = function (club) {
         club.$remove(function () {
             $scope.clubs = [];
         },
@@ -69,7 +69,7 @@ angular.module('league.club', [
                       });
     };
 
-    $scope.showTeams = function (club) {
+    $scope.activateSite = function (club) {
         $location.path("/team").search({ club_id: club.id });
     };
 })

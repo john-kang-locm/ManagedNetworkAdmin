@@ -26,8 +26,8 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
                 { field: "CreatedOn" },
                 { field: "UpdatedOn" },
                 { displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Edit</button> ' },
-                { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteClub(row.entity)" >Delete</button> ' },
-                { displayName: 'Activation', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="showTeams(row.entity)" >Activation</button> ' }
+                { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteSite(row.entity)" >Delete</button> ' },
+                { displayName: 'Activation', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="activateSite(row.entity)" >Activation</button> ' }
 
             ]
         };
@@ -308,8 +308,8 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
                     { field: "CreatedOn" },
                     { field: "UpdatedOn" },
                     { displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Edit</button> ' },
-          { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteClub(row.entity)" >Delete</button> ' },
-          { displayName: 'Activation', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="showTeams(row.entity)" >Activation</button> ' }
+          { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteSite(row.entity)" >Delete</button> ' },
+          { displayName: 'Activation', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="activateSite(row.entity)" >Activation</button> ' }
 
                 ]
             };

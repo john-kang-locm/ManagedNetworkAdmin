@@ -62,7 +62,7 @@ namespace ManagedNetworkAdmin.Api.Controllers
             Site st5 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lo65c5 eee", Description = "desc55 eee", DisplayName = "dsfs4442is eee", Hostname = "hosryt eee", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
             sts.Add(st5);
 
-            return sts as IEnumerable<Site>;
+            //return sts as IEnumerable<Site>;
             ////System.Diagnostics.Debugger.Launch();
             if (!redis.ContainsKey(CacheKey("sites")))
             {
@@ -199,8 +199,7 @@ namespace ManagedNetworkAdmin.Api.Controllers
                             foreach (var setting in site.SiteSettings)
                             {
                                 SiteSetting ss =
-                                    context.SiteSettings.AsNoTracking()
-                                        .Where(s => s.Id == setting.Id)
+                                    context.SiteSettings.Where(s => s.Id == setting.Id)
                                         .FirstOrDefault();
                                 ss.Value = setting.Value;
                                 context.Entry(ss).State = System.Data.Entity.EntityState.Modified;
