@@ -99,7 +99,7 @@
 .sitelayout label
 {
     display: block;
-    width: 200px;
+    /*width: 200px;*/
 }
 
 .sitelayout textarea

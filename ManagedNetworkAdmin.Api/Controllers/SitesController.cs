@@ -50,7 +50,7 @@ namespace ManagedNetworkAdmin.Api.Controllers
             //System.Diagnostics.Debugger.Launch();
 
             IList<Site> sts = new List<Site>();
-            Layout lo = new Layout { ActiveFlag = true, Id = 1, Name = "layout name1", Footer = "footer 1", Head = "head 1", Header = "header 1" };
+            Layout lo = new Layout { ActiveFlag = true, Id = 1, Name = "layout name1", Footer = @"<h2>footer 1</h2>", Head = @"<h2>head 1</h2>", Header = @"<h2>header 1</h2>" };
             Site st1 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lovxcvc1 aaa", Description = "desc11 aaa", DisplayName = "dis51 aaa", Hostname = "ho55st aaa", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
             sts.Add(st1);
             Site st2 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lxvcoc2 bbb", Description = "desc22 bbb", DisplayName = "di64 bbb", Hostname = "hos345t bbb", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
@@ -62,7 +62,7 @@ namespace ManagedNetworkAdmin.Api.Controllers
             Site st5 = new Site { Layout = lo, ActiveFlag = true, DefaultLocation = " lo65c5 eee", Description = "desc55 eee", DisplayName = "dsfs4442is eee", Hostname = "hosryt eee", DefaultState = "ca aaa", Id = 1, Name = "name aaa", LayoutId = 1 };
             sts.Add(st5);
 
-            //return sts as IEnumerable<Site>;
+            return sts as IEnumerable<Site>;
             ////System.Diagnostics.Debugger.Launch();
             if (!redis.ContainsKey(CacheKey("sites")))
             {
