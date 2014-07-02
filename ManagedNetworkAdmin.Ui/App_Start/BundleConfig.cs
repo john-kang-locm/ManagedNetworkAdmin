@@ -18,7 +18,7 @@ namespace App.ManagedNetworkAdmin.Ui
 
             bundles.Add(new ScriptBundle("~/js/app").Include(
                 //"~/scripts/vendor/angular-ui/ui-bootstrap.js",
-                //"~/scripts/vendor/angular.js",
+                "~/scripts/vendor/angular.js",
                 "~/scripts/vendor/angular-route.js",
                 "~/scripts/vendor/angular-ui-router.js",
                 "~/scripts/vendor/angular-resource.js",

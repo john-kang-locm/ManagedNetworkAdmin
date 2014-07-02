@@ -1,6 +1,7 @@
 <!-- <div ng-app="app" ng-controller="ModalInstanceCtrl" style="width:800px" >-->
 
 <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js" type="text/javascript"></script>-->
+
 <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular-sanitize.min.js" type="text/javascript"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular.min.js" type="text/javascript"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngularSetup.js" type="text/javascript"></script>-->
@@ -13,18 +14,19 @@
 
 
         <div class="modal-body sites">
+            
             <div>
                 <!--         <p>test0 {{selectedSite}}</p>
-                <p>test1 {{selectedSite.name}}</p>
-                <p>test2 {{content}}</p>
-                <p>test3 {{test3}}</p>
-                <p>test4 {{test4}}</p>-->
+                    <p>test1 {{selectedSite.name}}</p>
+                    <p>test2 {{content}}</p>
+                    <p>test3 {{test3}}</p>
+                    <p>test4 {{test4}}</p>-->
                 <label>Site Name</label>
                 <input type="text" ng-model="selectedSite.Name" />
             </div>
             <div>
                 <label>Display Name</label>
-                <input type="text" ng-model="selectedSite.Displayname" />
+                <input type="text" ng-model="selectedSite.DisplayName" />
             </div>
             <div>
                 <label>Description</label>
@@ -36,11 +38,15 @@
             </div>
             <div>
                 <label>Default Location</label>
-                <input type="text" ng-model="selectedSite.Defaultlocation" />
+                <input type="text" ng-model="selectedSite.DefaultLocation" />
             </div>
+            <!--<div>
+                <label>Default State</label>
+                <input type="text" ng-model="selectedDafaultState"  />
+            </div>-->
             <div>
                 <label>Default State</label>
-                <select ng-model="selectedSite.Defaultstate" ng-options="state.short for state in states"></select>
+                <select ng-model="selectedSite.DefaultState" ng-options="state for state in states"></select>
             </div>
             <div>
                 <label>Geoip</label>
@@ -48,48 +54,48 @@
             </div>
             <div>
                 <label>Partner Id</label>
-                <input type="text" ng-model="selectedSite.Partnerid" />
+                <input type="text" ng-model="selectedSite.PartnerId" />
             </div>
             <div>
                 <label>Partner Site Id</label>
-                <input type="text" ng-model="selectedSite.Partnersiteid" />
+                <input type="text" ng-model="selectedSite.PartnerSiteId" />
             </div>
             <!--     <div class="sitelayout">
-                <div id="select">
-                    <fieldset name="Layout" title="Layout">
-                        <legend>Layout</legend>
-                        <div>
-                            <input type="radio" value="exsiting" name="radio_layout" ng-model="selectedSite.radio_layout" />
-                            <label>Select Existing Layout</label>
-                            <select ng-model="selectedSite.layout"></select>
-                        </div>
-                        <div>
-                            <input type="radio" value="new" name="radio_layout" ng-model="selectedSite.radio_layout" />
-                            <label>
-                                Add new Layout</label>
-                            <input type="text" ng-model="selectedSite.newlayout" />
-                        </div>
+                         <div id="select">
+                             <fieldset name="Layout" title="Layout">
+                                 <legend>Layout</legend>
+                                 <div>
+                                     <input type="radio" value="exsiting" name="radio_layout" ng-model="selectedSite.radio_layout" />
+                                     <label>Select Existing Layout</label>
+                                     <select ng-model="selectedSite.layout"></select>
+                                 </div>
+                                 <div>
+                                     <input type="radio" value="new" name="radio_layout" ng-model="selectedSite.radio_layout" />
+                                     <label>
+                                         Add new Layout</label>
+                                     <input type="text" ng-model="selectedSite.newlayout" />
+                                 </div>
 
-                    </fieldset>
-                </div>
+                             </fieldset>
+                         </div>
 
-                <div>
-                    <label>Head</label>
-                    <textarea ng-model="selectedSite.head"></textarea>
-                </div>
-                <div>
-                    <label>Header</label>
-                    <textarea ng-model="selectedSite.header"></textarea>
-                </div>
-                <div>
-                    <label>Footer</label>
-                    <textarea ng-model="selectedSite.footer"></textarea>
-                </div>
-                <div>
-                    <label>Tracking</label>
-                    <textarea ng-model="selectedSite.tracking"></textarea>
-                </div>
-            </div>-->
+                         <div>
+                             <label>Head</label>
+                             <textarea ng-model="selectedSite.head"></textarea>
+                         </div>
+                         <div>
+                             <label>Header</label>
+                             <textarea ng-model="selectedSite.header"></textarea>
+                         </div>
+                         <div>
+                             <label>Footer</label>
+                             <textarea ng-model="selectedSite.footer"></textarea>
+                         </div>
+                         <div>
+                             <label>Tracking</label>
+                             <textarea ng-model="selectedSite.tracking"></textarea>
+                         </div>
+                     </div>-->
         </div>
 
 
@@ -119,13 +125,17 @@
 <!--                                        <textarea ng-model="layoutData.Header"></textarea>-->
                                         <div ng-controller="wysiwygeditor">
                                             <div class="lighter roboto">
-                                                <textarea ng-bind="layoutData.Header" class="text-left text-med text-gray"></textarea>
+                                                
+                                                <textarea ng-model="layoutData.Header" class="text-left text-med text-gray"></textarea>
                                             </div>
-                                           
+                                            <!--<div class="container lighter">
+                                                <div text-angular ng-model="layoutData.Header" name="headera" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
+                                            </div>-->
+      
  <div ng-show="isHeaderPreviewOpen" >
-                                                 <div class="sitelayout lighter">
-                                                <div text-angular ng-model="layoutData.Header" name="demo-editor" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
-                                            </div>
+     <div class="sitelayout lighter">
+         <div text-angular ng-model="layoutData.Header" name="header" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
+     </div>
 
    </div>
 
@@ -146,12 +156,12 @@
 <!--                                        <textarea ng-model="layoutData.Footer"></textarea>-->
                                                                                 <div ng-controller="wysiwygeditor">
                                             <div class="lighter roboto">
-                                                <textarea ng-bind="layoutData.Footer" class="text-left text-med text-gray"></textarea>
+                                                <textarea ng-model="layoutData.Footer" class="text-left text-med text-gray"></textarea>
                                             </div>
                                            
  <div ng-show="isFooterPreviewOpen" >
                                                  <div class="sitelayout lighter">
-                                                <div text-angular ng-model="layoutData.Footer" name="demo-editor" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
+                                                <div text-angular ng-model="layoutData.Footer" name="footer" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
                                             </div>
 
    </div>

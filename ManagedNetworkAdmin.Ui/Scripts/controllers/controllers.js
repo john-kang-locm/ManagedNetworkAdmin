@@ -186,21 +186,31 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
 .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'apiService', function ($scope, $modalInstance, apiService) {
     //var items = ['item1', 'item2', 'item3'];
 
-    $scope.states = [{ short: 'CA', long: 'California' },
-{ short: 'TX', long: 'Texax' },
-{ short: 'NY', long: 'Newyork' },
-];
+//    $scope.states = [{ short: 'CA', long: 'California' },
+//{ short: 'TX', long: 'Texas' },
+//{ short: 'NY', long: 'Newyork' },
+//    ];
+    $scope.states = ['CA', 'TX', 'NY'];
+
     $scope.myOptions = ["existing", "new"];
     //$scope.settingContent = "new";
     $scope.layoutContent = "new";
     $scope.test3 = $scope.selectedSite;
     $scope.test4 = $scope.$parent.selectedSite;
+    //$scope.selectedSite.DefaultState = $scope.states[0];
+    //$scope.DefaultState = $scope.states[$scope.selectedSite.DefaultState];
+        //$scope.sites = $scope.selectedSite;
 
-    //$scope.sites = $scope.selectedSite;
+    function getDafaultState(state) {
+            for (var i = 0; i < $scope.states.length; i++) {
+                if ($scope.states[i].short===state) {
+                    return $scope.states[i];
+                }
+            }
+        };
+    //$scope.selectedDafaultState= getDafaultState($scope.selectedSite.DefaultState);
 
-
-
-    $scope.$watch('myModel', function (v) {
+        $scope.$watch('myModel', function (v) {
         console.log('changed', v);
     });
 
@@ -260,6 +270,9 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
     .controller('LayoutAccordion', function ($scope) {
         $scope.oneAtATime = true;
         $scope.layoutData = $scope.selectedSite.Layout;;
+        //$scope.layoutData.Header = '<iframe src="http://www.w3schools.com"></iframe>';
+        //$scope.layoutData.Header = '<img src="http://pagead2.googlesyndication.com/simgad/2575997819166219728" border="0" width="491" height="223" alt="" class="img_ad">';
+
         $scope.groups = [
           {
               title: 'Dynamic Group Header - 1',
@@ -647,6 +660,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
                     { field: "Description" },
                     { field: "DefaultLocation" },
                     { field: "Hostname" },
+                    { field: "DefaultState", visible:false },
                     //{ field: "Settings[0].Name" },
                     //{ field: "Settings[0].Value" },
                     //{ field: "Settings[0].SiteId" },
