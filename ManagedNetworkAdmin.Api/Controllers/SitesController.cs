@@ -11,6 +11,7 @@ using ManagedNetworkAdmin.Data.Models;
 using ManagedNetworkAdmin.Data.Models.Apollo;
 using ManagedNetworkAdmin.Data.Responses;
 using System.Web.Http.Cors;
+using System.Threading.Tasks;
 //using System.Web.Mvc;
 
 namespace ManagedNetworkAdmin.Api.Controllers
@@ -157,13 +158,13 @@ namespace ManagedNetworkAdmin.Api.Controllers
         }
 
         /// <summary>
-        /// Add a new Site
+        /// Update a Site
         /// </summary>
         /// <param name="site">A Site</param>
         /// <returns>HttpResponseMessage</returns>
         //[HttpPost]
         [AcceptVerbs("GET", "POST", "PUT")]
-        public HttpResponseMessage Update(Site site)
+        public async Task<HttpResponseMessage> Update(Site site)
         {
             System.Diagnostics.Debugger.Launch();
 
@@ -184,7 +185,8 @@ namespace ManagedNetworkAdmin.Api.Controllers
                             //    context.Entry(layout).State = System.Data.Entity.EntityState.Modified;
                             //}
 
-                            if (site.Layout.Id == site.LayoutId)
+                            //if (site.Layout.Id == site.LayoutId)
+                            if (site.LayoutId == 0)
                                 context.Layouts.Add(site.Layout);
                             else
                                 site.LayoutId = site.Layout.Id;
@@ -215,9 +217,14 @@ namespace ManagedNetworkAdmin.Api.Controllers
                         dbContextTransaction.Rollback();
                         return new HttpResponseMessage(HttpStatusCode.InternalServerError);
                     }
+
+                    await CacheSites();
+
                     return new HttpResponseMessage(HttpStatusCode.Created);
                 }
             }
+
+
 
 
             //if (site != null)
@@ -237,6 +244,82 @@ namespace ManagedNetworkAdmin.Api.Controllers
             //    return new HttpResponseMessage(HttpStatusCode.Created);
             //}
 
+        }
+
+        /// <summary>
+        /// Update a Site
+        /// </summary>
+        /// <param name="site">A Site</param>
+        /// <returns>HttpResponseMessage</returns>
+        //[HttpPost]
+        [AcceptVerbs("GET", "POST", "PUT")]
+        public async Task<HttpResponseMessage> ToggleActiveFlag(Site site)
+        {
+            System.Diagnostics.Debugger.Launch();
+
+            using (var context = new ApolloContext())
+            {
+                using (var dbContextTransaction = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        if (site != null)
+                        {
+                            Site st = context.Sites.AsNoTracking().Where(s => s.Id == site.Id).FirstOrDefault();
+                            if (st != null)
+                            {
+                                st = site;
+                                context.Entry(st).State = System.Data.Entity.EntityState.Modified;
+                            }
+
+                            //context.Sites.Attach(st);
+                            context.SaveChanges();
+                            dbContextTransaction.Commit();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        dbContextTransaction.Rollback();
+                        return new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                    }
+
+                    await CacheSites();
+
+                    return new HttpResponseMessage(HttpStatusCode.Created);
+                }
+            }
+
+
+
+
+            //if (site != null)
+            //{
+            //    site.CreatedOn = site.UpdatedOn = DateTime.Now;
+            //    site.UpdatedBy = "ManagedNetworkAdmin api";
+            //    Layout layout = new Layout {  Name = "test" , ActiveFlag=true, DeletedFlag=false};
+            //    layout.CreatedOn = layout.UpdatedOn = DateTime.Now;
+            //    layout.UpdatedBy = "ManagedNetworkAdmin api";
+
+
+            //    ContextApollo.Layouts.Add(layout);
+
+            //    //ContextApollo.Sites.Add(site);
+            //    //ContextApollo.Entry(layout).State = System.Data.EntityState.Added;
+            //    int status = ContextApollo.SaveChanges();
+            //    return new HttpResponseMessage(HttpStatusCode.Created);
+            //}
+
+        }
+
+
+
+        async Task CacheSites()
+        {
+            if (redis.ContainsKey(CacheKey("sites")))
+            {
+                //redis.Remove(CacheKey("sitelist"));
+                redis.Replace(CacheKey("sites"), ContextApollo.Sites.Include("SiteSettings").Include("Layout").AsEnumerable());
+            }
         }
 
         //public HttpResponseMessage Update(int id, Site site)

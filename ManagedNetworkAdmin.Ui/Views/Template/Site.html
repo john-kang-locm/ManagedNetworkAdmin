@@ -117,7 +117,7 @@
                                 <div ng-show="layoutContent == 'new'" >
                                     <div>
                                         <label>Head</label>
-                                        <textarea ng-model="layoutData.Head"></textarea>
+                                        <textarea ng-model="layoutData.Head" ng-change="onLayoutChange()"></textarea>
                                     </div>
                                     <div>
                                        <div style="float:left"><label>Header &nbsp &nbsp </label></div>
@@ -126,7 +126,7 @@
                                         <div ng-controller="wysiwygeditor">
                                             <div class="lighter roboto">
                                                 
-                                                <textarea ng-model="layoutData.Header" class="text-left text-med text-gray"></textarea>
+                                                <textarea ng-model="layoutData.Header" class="text-left text-med text-gray" ng-change="onLayoutChange()"></textarea>
                                             </div>
                                             <!--<div class="container lighter">
                                                 <div text-angular ng-model="layoutData.Header" name="headera" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
@@ -134,7 +134,7 @@
       
  <div ng-show="isHeaderPreviewOpen" >
      <div class="sitelayout lighter">
-         <div text-angular ng-model="layoutData.Header" name="header" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
+         <div text-angular ng-model="layoutData.Header" name="header" ta-text-editor-class="border-around container" ta-html-editor-class="border-around" ng-change="onLayoutChange()"></div>
      </div>
 
    </div>
@@ -156,12 +156,12 @@
 <!--                                        <textarea ng-model="layoutData.Footer"></textarea>-->
                                                                                 <div ng-controller="wysiwygeditor">
                                             <div class="lighter roboto">
-                                                <textarea ng-model="layoutData.Footer" class="text-left text-med text-gray"></textarea>
+                                                <textarea ng-model="layoutData.Footer" class="text-left text-med text-gray" ng-change="onLayoutChange()"></textarea>
                                             </div>
                                            
  <div ng-show="isFooterPreviewOpen" >
                                                  <div class="sitelayout lighter">
-                                                <div text-angular ng-model="layoutData.Footer" name="footer" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
+                                                     <div text-angular ng-model="layoutData.Footer" name="footer" ta-text-editor-class="border-around container" ta-html-editor-class="border-around"></div>
                                             </div>
 
    </div>
@@ -172,7 +172,7 @@
                                     </div>
                                     <div>
                                         <label>Tracking</label>
-                                        <textarea ng-model="layoutData.Tracking"></textarea>
+                                        <textarea ng-model="layoutData.Tracking" ng-change="onLayoutChange()"> </textarea>
                                     </div>
                                 </div>
 
@@ -256,7 +256,7 @@
 
         <div class="modal-footer">
             <button class="btn btn-info " ng-click="preview()">Preview</button>
-            <button class="btn btn-primary" ng-click="addsite()">Submit</button>
+            <button class="btn btn-primary" ng-click="updatesite()">Submit</button>
 
             <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>

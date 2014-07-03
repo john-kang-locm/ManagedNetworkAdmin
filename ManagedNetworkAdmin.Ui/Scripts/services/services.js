@@ -8,7 +8,7 @@ angular.module('app.services', [])
     //var urlBase = 'http://localhost:56305/api/v1/';
     var urlBase = 'http://localhost:8002/api/v1/';
     var deferred = $q.defer();
-
+    
     //getsites
     this.getsites = function () {
         $http({
@@ -204,5 +204,21 @@ angular.module('app.services', [])
 
         return deferred.promise;
     }
+    this.toggleActiveFlag = function (site) {
+        $http({
+            method: 'PUT',
+            url: urlBase + 'Sites/ToggleActiveFlag',
+            data: site
+        }).
+         success(function (data, status, headers, config) {
+                deferred.resolve(data);
+            }).
+         error(function (data, status, headers, config) {
+             deferred.reject(data);
+         });
+
+        return deferred.promise;
+    }
+
 
 }]);
