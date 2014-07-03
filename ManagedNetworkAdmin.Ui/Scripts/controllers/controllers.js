@@ -694,10 +694,10 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
                     //{ field: "Layout" },
                     { field: "CreatedOn" },
                     { field: "UpdatedOn" },
-                    { field: "ActiveFlag", cellTemplate: '<input type="checkbox" ng-model="row.entity.ActiveFlag" ng-click="toggleActiveFlag(row.entity)">'},
+                    { field: "ActiveFlag", cellTemplate: '<input type="checkbox" ng-model="row.entity.ActiveFlag" ng-change="toggleActiveFlag(row.entity)">' },
                     { displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Edit</button> ' },
-          { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteSite(row.entity)" >Delete</button> ' },
-          { displayName: 'Activate', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="activateSite(row.entity)" >Activate</button> ' }
+          //{ displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteSite(row.entity)" >Delete</button> ' },
+          //{ displayName: 'Activate', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="activateSite(row.entity)" >Activate</button> ' }
 
                 ]
             };
