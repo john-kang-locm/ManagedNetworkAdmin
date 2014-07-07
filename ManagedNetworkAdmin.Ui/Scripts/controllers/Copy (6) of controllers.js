@@ -1,78 +1,8 @@
 ﻿'use strict';
 
-angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.factories', 'app.directives', 'app.services','ui.router', 'ui.bootstrap', 'textAngular'])
+angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.factories', 'app.directives', 'app.services', 'ui.bootstrap', 'textAngular'])
 
-
-    //	.config(function($stateProvider, $urlRouterProvider){
-
-	//	$urlRouterProvider.otherwise("/main/tab1");
-
-	//	$stateProvider
-	//		.state("main", { abtract: true, url:"/main", templateUrl:"main.html" })
-	//			.state("main.tab1", { url: "/tab1", templateUrl: "tab1.html" })
-	//			.state("main.tab2", { url: "/tab2", templateUrl: "tab2.html" })
-	//			.state("main.tab3", { url: "/tab3", templateUrl: "tab3.html" });
-
-	//})
-
-.config(function($stateProvider, $urlRouterProvider){
- 
-    $urlRouterProvider.otherwise("/main/tab1");
- 
-    $stateProvider
-        .state("main", { abstract: true, url: "/main", template: "<h1>HELLO!</h1>" })
-            .state("main.tab1", { url: "/tab1", template: "<h1>HELLO1!</h1>" })
-            .state("main.tab2", { url: "/tab2", template: "<h1>HELLO2!</h1>" })
-            .state("main.tab3", { url: "/tab3", template: "<h1>HELLO3!</h1>" });
-})
-.controller('FirstTabCtrl', ['$scope',
-function ($scope) {
-    console.log('Loading FirstTabCtrl');
-    $scope.title = 'First Tab';
-}
-])
-
-.controller('SecondTabCtrl', ['$scope',
-function ($scope) {
-    console.log('Loading SecondTabCtrl');
-    $scope.title = 'Second Tab';
-}
-])
-
-.controller('ThirdTabCtrl', ['$scope',
-function ($scope) {
-    console.log('Loading ThirdTabCtrl');
-    $scope.title = 'Third Tab';
-}
-])
-
-
-	.controller("mainController", function($rootScope, $scope, $state) {		
-
-		$scope.go = function(route){
-			$state.go(route);
-		};
-
-		$scope.active = function(route){
-			return $state.is(route);
-		};
-
-		$scope.tabs = [
-			{ heading: "Tab 1", route:"main.tab1", active:false },
-			{ heading: "Tab 2", route:"main.tab2", active:false },
-			{ heading: "Tab 3", route:"main.tab3", active:false },
-		];
-
-		$scope.$on("$stateChangeSuccess", function() {
-			$scope.tabs.forEach(function(tab) {
-				tab.active = $scope.active(tab.route);
-			});
-		});
-	})
-
-
-
-          .controller('wysiwygeditor', ['$scope', 'textAngularManager', '$document', function ($scope, textAngularManager, $document) {
+          .controller('wysiwygeditor',['$scope', 'textAngularManager', '$document',function($scope, textAngularManager, $document) {
               $scope.data = { orightml: '<h2>Try me!</h2><p>textAngular is a super cool WYSIWYG Text Editor directive for AngularJS</p><p><img class="ta-insert-video" ta-insert-video="http://www.youtube.com/embed/2maA1-mvicY" src="" allowfullscreen="true" width="300" frameborder="0" height="250"/></p><p><b>Features:</b></p><ol><li>Automatic Seamless Two-Way-Binding</li><li>Super Easy <b>Theming</b> Options</li><li style="color: green;">Simple Editor Instance Creation</li><li>Safely Parses Html for Custom Toolbar Icons</li><li class="text-danger">Doesn&apos;t Use an iFrame</li><li>Works with Firefox, Chrome, and IE8+</li></ol><p><b>Code at GitHub:</b> <a href="https://github.com/fraywing/textAngular">Here</a> </p><p>昮朐 魡 燚璒瘭 譾躒鑅, 皾籈譧 紵脭脧 逯郹酟 煃 瑐瑍, 踆跾踄 趡趛踠 顣飁 廞 熥獘 豥 蔰蝯蝺 廦廥彋 蕍蕧螛 溹溦 幨懅憴 妎岓岕 緁, 滍 蘹蠮 蟷蠉蟼 鱐鱍鱕, 阰刲 鞮鞢騉 烳牼翐 魡 骱 銇韎餀 媓幁惁 嵉愊惵 蛶觢, 犝獫 嶵嶯幯 縓罃蔾 魵 踄 罃蔾 獿譿躐 峷敊浭, 媓幁 黐曮禷 椵楘溍 輗 漀 摲摓 墐墆墏 捃挸栚 蛣袹跜, 岓岕 溿 斶檎檦 匢奾灱 逜郰傃</p>' };
               $scope.data.htmlcontent = $scope.data.orightml;
               $scope.data.htmlcontent3;
@@ -256,10 +186,10 @@ function ($scope) {
 .controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 'apiService', function ($scope, $modalInstance, apiService) {
     //var items = ['item1', 'item2', 'item3'];
 
-    //    $scope.states = [{ short: 'CA', long: 'California' },
-    //{ short: 'TX', long: 'Texas' },
-    //{ short: 'NY', long: 'Newyork' },
-    //    ];
+//    $scope.states = [{ short: 'CA', long: 'California' },
+//{ short: 'TX', long: 'Texas' },
+//{ short: 'NY', long: 'Newyork' },
+//    ];
     $scope.states = ['CA', 'TX', 'NY'];
 
     $scope.myOptions = ["existing", "new"];
@@ -269,18 +199,18 @@ function ($scope) {
     $scope.test4 = $scope.$parent.selectedSite;
     //$scope.selectedSite.DefaultState = $scope.states[0];
     //$scope.DefaultState = $scope.states[$scope.selectedSite.DefaultState];
-    //$scope.sites = $scope.selectedSite;
+        //$scope.sites = $scope.selectedSite;
 
     function getDafaultState(state) {
-        for (var i = 0; i < $scope.states.length; i++) {
-            if ($scope.states[i].short === state) {
-                return $scope.states[i];
+            for (var i = 0; i < $scope.states.length; i++) {
+                if ($scope.states[i].short===state) {
+                    return $scope.states[i];
+                }
             }
-        }
-    };
+        };
     //$scope.selectedDafaultState= getDafaultState($scope.selectedSite.DefaultState);
 
-    $scope.$watch('myModel', function (v) {
+        $scope.$watch('myModel', function (v) {
         console.log('changed', v);
     });
 
@@ -304,29 +234,6 @@ function ($scope) {
 
 
     $scope.addsite = function () {
-        //alert("test");
-        //$scope.sites.ActiveFlag = true;
-        //$scope.sites.Id = 9999;
-
-        ////$scope.sites.LayoutId = 9999;
-        //$scope.sites.Layout = {Id:"2222"};
-        //$scope.sites.DeletedFlag = true;
-        //$scope.sites.UpdatedBy = 'John';
-        //$scope.sites.UpdatedOn = new Date();
-
-        //apiFactory.addSite($scope.sites).success(successPostCallback).error(errorCallback);
-        //apiService.addsite($scope.sites)
-        apiService.addsite($scope.selectedSite)
-            .then(function (data) {
-                $scope.myData = data;
-            }, function (error) {
-                alert("error");
-            });
-
-        $scope.ok();
-    }
-
-    $scope.updatesite = function () {
         //alert("test");
         //$scope.sites.ActiveFlag = true;
         //$scope.sites.Id = 9999;
@@ -365,9 +272,6 @@ function ($scope) {
         $scope.layoutData = $scope.selectedSite.Layout;;
         //$scope.layoutData.Header = '<iframe src="http://www.w3schools.com"></iframe>';
         //$scope.layoutData.Header = '<img src="http://pagead2.googlesyndication.com/simgad/2575997819166219728" border="0" width="491" height="223" alt="" class="img_ad">';
-        $scope.onLayoutChange = function() {
-            $scope.selectedSite.LayoutId = 0;
-        }
 
         $scope.groups = [
           {
@@ -412,7 +316,6 @@ function ($scope) {
                 afterSelectionChange: function () {
                     $scope.selectedSite.Layout = $scope.selectedLayout[0];
                     //$scope.selectedSite.LayoutId = $scope.selectedSite.Layout[0].Id;
-                    //$scope.selectedSite.LayoutId = 0;
                 },
                 jqueryUITheme: true,
                 enableCellSelection: true,
@@ -557,7 +460,7 @@ function ($scope) {
                     { field: "Id" },
                     { field: "Name", pinned: true },
                     { field: "SiteId" },
-                    { field: "Value", enableCellEdit: true }
+                    { field: "Value", enableCellEdit: true}
                     //{ field: "Value", enableCellEdit: true, cellEditTemplate: '<input type="checkbox" ng-model="row.entity.Active" >' },
                     //{ field: "Value", enableCellEdit: true, cellEditTemplate: '<input type="checkbox" ng-checked="row.entity.value==\'on\'" ng-input="COL_FIELD" ' },
                     //{ displayName: 'Select', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Select</button> ' },
@@ -696,7 +599,7 @@ function ($scope) {
             setTimeout(function () {
                 var data,
                     urlBase = 'http://localhost:8002/api/v1/';
-
+ 
                 if (searchText) {
                     var ft = searchText.toLowerCase();
                     //$http.get(urlBase + 'Sites/Get').success(function (largeLoad) {
@@ -705,7 +608,7 @@ function ($scope) {
                     //    });
                     //    $scope.setPagingData($scope.sitesGridData, page, pageSize);
                     //});
-                    data = $scope.sitesData.filter(function (item) {
+                    data=  $scope.sitesData.filter(function (item) {
                         return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
                     });
                     $scope.setPagingData(data, page, pageSize);
@@ -757,17 +660,16 @@ function ($scope) {
                     { field: "Description" },
                     { field: "DefaultLocation" },
                     { field: "Hostname" },
-                    { field: "DefaultState", visible: false },
+                    { field: "DefaultState", visible:false },
                     //{ field: "Settings[0].Name" },
                     //{ field: "Settings[0].Value" },
                     //{ field: "Settings[0].SiteId" },
                     //{ field: "Layout" },
                     { field: "CreatedOn" },
                     { field: "UpdatedOn" },
-                    { field: "ActiveFlag", cellTemplate: '<input type="checkbox" ng-model="row.entity.ActiveFlag" ng-change="toggleActiveFlag(row.entity)">' },
                     { displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" class="btn btn-primary" ng-click="editSite(row.entity)" >Edit</button> ' },
-          //{ displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteSite(row.entity)" >Delete</button> ' },
-          //{ displayName: 'Activate', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="activateSite(row.entity)" >Activate</button> ' }
+          { displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn btn-primary" ng-click="deleteSite(row.entity)" >Delete</button> ' },
+          { displayName: 'Activate', cellTemplate: '<button id="showBtn" type="button" class="btn btn-primary" ng-click="activateSite(row.entity)" >Activate</button> ' }
 
                 ]
             };
@@ -809,15 +711,6 @@ function ($scope) {
         //        });
         //}
 
-        $scope.toggleActiveFlag= function(site) {
-            apiService.toggleActiveFlag(site)
-.then(function (data) {
-    $scope.myData = data;
-}, function (error) {
-    alert("error");
-});
-
-        }
 
 
         $scope.addSite = function (site) {

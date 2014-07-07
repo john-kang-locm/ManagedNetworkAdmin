@@ -573,10 +573,17 @@
     <Content Include="Scripts\vendor\ng-grid.js" />
     <Content Include="Scripts\vendor\ng-grid.min.js" />
     <None Include="Views\club.cshtml" />
+    <Content Include="Views\main.html" />
     <Content Include="Views\Partials\Sitesetting.html" />
     <Content Include="Views\Partials\Layout.html" />
     <Content Include="Views\Partials\Site.html" />
-    <Content Include="Views\Template\Copy of Layout.html" />
+    <Content Include="Views\Site.html" />
+    <Content Include="Views\Tab1.html" />
+    <Content Include="Views\Template\Copy of club.tpl.html" />
+    <Content Include="Views\Template\Tab3.html" />
+    <Content Include="Views\Template\Tab2.html" />
+    <Content Include="Views\Template\Tab1.html" />
+    <Content Include="Views\Template\main.html" />
     <Content Include="Views\Template\Site.html" />
     <Content Include="Views\Template\Copy %282%29 of club_edit.tpl.html" />
     <Content Include="Views\Template\Copy %283%29 of club_edit.tpl.html" />
@@ -620,6 +627,8 @@
     <Content Include="Views\home.cshtml" />
     <Content Include="Views\home_bk1 - Copy.cshtml" />
     <Content Include="Views\home - Copy %282%29.cshtml" />
+    <Content Include="Views\Copy %283%29 of home.cshtml" />
+    <Content Include="Views\home bk2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
