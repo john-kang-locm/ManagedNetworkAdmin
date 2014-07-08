@@ -65,7 +65,6 @@ angular.module('app.directives', [])
         link: function(scope, element, attrs, tabsetController) {
             tabsetController.addTab(scope);
 
-
             scope.select = function () {
                 tabsetController.selectTab(scope);
             }
@@ -74,6 +73,9 @@ angular.module('app.directives', [])
             scope.$watch('selected', function () {
                 if (scope.selected) {
                     tabsetController.setTabTemplate(scope.templateUrl);
+                    element.css('background-color', 'red');
+
+
                 }
             });
         },
