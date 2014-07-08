@@ -3,7 +3,7 @@
   'templates-common',
   'league.home',
   'league.about',
-  'league.club',
+  'league.site',
   'league.team',
   'ui.state',
   'ui.route'

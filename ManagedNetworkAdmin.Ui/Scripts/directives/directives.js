@@ -11,7 +11,7 @@
 angular.module('app.directives', [])
 
 
-.directive('tabset1', function () {
+.directive('mytabset', function () {
     return {
         restrict: 'E',
         replace: true,
@@ -53,11 +53,11 @@ angular.module('app.directives', [])
           '</div>'
     };
 })
-.directive('tab1', function () {
+.directive('mytab', function () {
     return {
         restrict: 'E',
         replace: true,
-        require: '^tabset1',
+        require: '^mytabset',
         scope: {
             title: '@',
             templateUrl: '@'

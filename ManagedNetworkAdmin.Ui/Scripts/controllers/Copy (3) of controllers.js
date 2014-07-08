@@ -124,7 +124,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
                     //'selectedSite': function () { return site },
                     //'apiservice': function() { return $scope.apiservice; }
                 }
-                //resolve: { club: function () { return angular.copy(club); }, isNew: function () { return false; } },
+                //resolve: { site: function () { return angular.copy(site); }, isNew: function () { return false; } },
                 //size: size,
                 //resolve: {
                 //    items: function () {
@@ -142,12 +142,12 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
             //});
         };
 
-        //$scope.editSite = function (club) {
-        //    $scope.myDialog = $dialog.dialog({ dialogFade: false, resolve: { club: function () { return angular.copy(club); }, isNew: function () { return false; } } });
-        //    $scope.myDialog.open('Template/Site.html', 'ClubEditCtrl').then(function (result) {
+        //$scope.editSite = function (site) {
+        //    $scope.myDialog = $dialog.dialog({ dialogFade: false, resolve: { site: function () { return angular.copy(site); }, isNew: function () { return false; } } });
+        //    $scope.myDialog.open('Template/Site.html', 'siteEditCtrl').then(function (result) {
         //        if (result === 'cancel') { }
         //        else {
-        //            $scope.clubs = ClubRes.query();
+        //            $scope.sites = siteRes.query();
         //        }
         //    });
         //};
@@ -277,7 +277,7 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
                     'selectedSite': function () { return angular.copy(site); },
                     //'apiservice': function() { return $scope.apiservice; }
                 }
-                //resolve: { club: function () { return angular.copy(club); }, isNew: function () { return false; } },
+                //resolve: { site: function () { return angular.copy(site); }, isNew: function () { return false; } },
                 //size: size,
                 //resolve: {
                 //    items: function () {
@@ -295,22 +295,22 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
         };
 
 
-        $scope.editClub = function (club) {
-            $scope.myDialog = $dialog.dialog({ dialogFade: false, resolve: { club: function () { return angular.copy(club); } } });
-            $scope.myDialog.open('club/Site.html', 'ClubEditCtrl').then(function (result) {
+        $scope.editsite = function (site) {
+            $scope.myDialog = $dialog.dialog({ dialogFade: false, resolve: { site: function () { return angular.copy(site); } } });
+            $scope.myDialog.open('site/Site.html', 'siteEditCtrl').then(function (result) {
                 if (result === 'cancel') { }
                 else {
-                    $scope.clubs = ClubRes.query();
+                    $scope.sites = siteRes.query();
                 }
             });
         };
 
-        //$scope.editSite = function (club) {
-        //    $scope.myDialog = $dialog.dialog({ dialogFade: false, resolve: { club: function () { return angular.copy(club); }, isNew: function () { return false; } } });
-        //    $scope.myDialog.open('Template/Site.html', 'ClubEditCtrl').then(function (result) {
+        //$scope.editSite = function (site) {
+        //    $scope.myDialog = $dialog.dialog({ dialogFade: false, resolve: { site: function () { return angular.copy(site); }, isNew: function () { return false; } } });
+        //    $scope.myDialog.open('Template/Site.html', 'siteEditCtrl').then(function (result) {
         //        if (result === 'cancel') { }
         //        else {
-        //            $scope.clubs = ClubRes.query();
+        //            $scope.sites = siteRes.query();
         //        }
         //    });
         //};
@@ -366,12 +366,12 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
 
 
 
-.controller('ClubEditCtrl', function ClubEditController($scope, dialog, club, isNew) {
-    $scope.club = club;
+.controller('siteEditCtrl', function siteEditController($scope, dialog, site, isNew) {
+    $scope.site = site;
     $scope.submit = function () {
         if (isNew) {
-            $scope.club.$save(function (data) {
-                dialog.close($scope.club);
+            $scope.site.$save(function (data) {
+                dialog.close($scope.site);
             },
                                 function (error) {
                                     // don't close dialog, display an error
@@ -379,8 +379,8 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
                                 });
         }
         else {
-            $scope.club.$update(function (data) {
-                dialog.close($scope.club);
+            $scope.site.$update(function (data) {
+                dialog.close($scope.site);
             },
                                   function (error) {
                                       // don't close dialog, display an error
@@ -399,10 +399,10 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.factories', 'app
 /**
  * Add a resource to allow us to get at the server
  */
-.factory('ClubRes', function ($resource) {
+.factory('siteRes', function ($resource) {
     var test = ["aaa", "bbb"];
     return test;
-    //return $resource("../clubs/:id.json", { id: '@id' }, { 'update': { method: 'PUT' }, 'remove': { method: 'DELETE', headers: { 'Content-Type': 'application/json' } } });
+    //return $resource("../sites/:id.json", { id: '@id' }, { 'update': { method: 'PUT' }, 'remove': { method: 'DELETE', headers: { 'Content-Type': 'application/json' } } });
 })
 
 .controller('CustomDirectivesController', function ($scope, $http) {

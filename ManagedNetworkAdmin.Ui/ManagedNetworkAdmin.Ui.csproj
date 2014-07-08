@@ -170,9 +170,6 @@
     <Content Include="Global.asax" />
     <Content Include="Images\searchButton.png" />
     <Content Include="Scripts\controllers\Copy %282%29 of controllers.js" />
-    <Content Include="Scripts\controllers\Copy %282%29 of controllers.spec.js">
-      <DependentUpon>Copy %282%29 of controllers.js</DependentUpon>
-    </Content>
     <Content Include="Scripts\controllers\Copy %283%29 of controllers.js" />
     <Content Include="Scripts\controllers\Copy %283%29 of controllers.spec.js">
       <DependentUpon>Copy %283%29 of controllers.js</DependentUpon>
