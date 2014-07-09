@@ -7,23 +7,29 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title></title>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 </head>
 
 
 
 <body>
-    
+
     <div ng-app="app" ng-controller="TabsParentController">
         <tabset>
-            <tab ng-repeat="workspace in workspaces"
-                 heading="{{workspace.name}}"
-                 active=workspace.active>
+            <tab ng-repeat="Site in Sites"
+                 heading="{{Site.name}}"
+                 active=Site.active>
                 <div ng-controller="TabsChildController"
-                     ng-init="workspace=workspace">
-                    <div>
-                        {{workspace.id}} : {{ workspace.name}}
-                    </div>
-                    <input type="text" ng-model="workspace.name" />
+                     ng-init="Site=Site">
+    <div class="tabcontent" ng-app="app" ng-controller="HomeCtrl">
+
+        <strong>Search:</strong> <input type="text" ng-model="filterOptions.filterText" />
+
+        <span style="float:right"><a href="/site">Add site</a></span>
+
+
+        <div class="siteGridStyle" ng-grid="homeGridOptions"></div>
+    </div>
                 </div>
             </tab>
             <tab select="addWorkspace()">
@@ -36,29 +42,35 @@
 
 
     <div class="homeMiddle" ng-app="app" ng-controller="HomeCtrl">
-@*    <div class="homeMiddle" ng-app="app" ng-controller="mainController">*@
+        @*   
+        <div class="homeMiddle" ng-app="app" ng-controller="mainController">
+            *@
 
 
- <div class="container">
-      <div class="row">
-        <mytabset>
+@* <div class="container">
+     <div class="row">
+         <mytabset>
           <mytab title="Tab 1" ng-class="{cb-tab}" template-url="/views/Template/Tab1.html"></mytab>
           <mytab title="Tab 2" template-url="/views/Template/Tab2.html"></mytab>
           <mytab title="Tab 3" template-url="/views/Template/Tab3.html"></mytab>
         </mytabset>
-      </div>
-    </div>
-@*    </div>*@
+     </div>
+ </div>*@
+            @*   
+        </div>
+        *@
 
 
-@*    <script src="components/angular/angular.js"></script>
-    <script src="scripts/directives/tabset.js"></script>
+@*   
+        <script src="components/angular/angular.js"></script>
+        <script src="scripts/directives/tabset.js"></script>
 
 
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/FirstTabCtrl.js"></script>
-    <script src="scripts/controllers/SecondTabCtrl.js"></script>
-    <script src="scripts/controllers/ThirdTabCtrl.js"></script>*@
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/FirstTabCtrl.js"></script>
+        <script src="scripts/controllers/SecondTabCtrl.js"></script>
+        <script src="scripts/controllers/ThirdTabCtrl.js"></script>
+        *@
 
 
 @*<div ng-app="app" ng-controller="mainController">
@@ -75,26 +87,27 @@
     <h2>View:</h2>
     <div ui-view></div>
 
-</div>*@
+        </div>
+        *@
 
 
     </div>
     @*<div class="row">
-            <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="login(userName, password)">
-                <h2 class="text-center">Home</h2>
-                <div class="form-box">
-                    <div class="form-group">
-                        <input ng-model="userName" type="text" class="form-control" placeholder="Username or Email" required autofocus />
-                    </div>
-                    <div class="form-group">
-                        <input ng-model="password" type="password" class="form-control" placeholder="Password" required />
-                    </div>
-                    <div class="form-group">
-                        <button class="btn btn-primary btn-block" type="submit" ng-disabled="!(userName && password)" disabled>Sign In</button>
-                    </div>
+        <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="login(userName, password)">
+            <h2 class="text-center">Home</h2>
+            <div class="form-box">
+                <div class="form-group">
+                    <input ng-model="userName" type="text" class="form-control" placeholder="Username or Email" required autofocus />
                 </div>
-            </form>
-        </div>
+                <div class="form-group">
+                    <input ng-model="password" type="password" class="form-control" placeholder="Password" required />
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit" ng-disabled="!(userName && password)" disabled>Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
     *@
 </body>
 

@@ -161,3 +161,13 @@
 .cb-active {
     background-color: blue;
 }
+
+.modal
+{
+    width: 800px !important;
+}
+.modal-dialog
+{
+    width: 800px;
+}
+li.active, li.active.a {background:blue; color:white;}

@@ -5,24 +5,24 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
     .controller("TabsParentController", function ($scope) {
  
         var setAllInactive = function() {
-            angular.forEach($scope.workspaces, function(workspace) {
-                workspace.active = false;
+            angular.forEach($scope.Sites, function(Site) {
+                Site.active = false;
             });
         };
  
         var addNewWorkspace = function() {
-            var id = $scope.workspaces.length + 1;
-            $scope.workspaces.push({
+            var id = $scope.Sites.length + 1;
+            $scope.Sites.push({
                 id: id,
-                name: "Workspace " + id,
+                name: "Site " + id,
                 active: true
             });
         };
  
-        $scope.workspaces =
+        $scope.Sites =
         [
-            { id: 1, name: "Workspace 1", active:true  },
-            { id: 2, name: "Workspace 2", active:false }
+            { id: 1, name: "Site 1", active:true  },
+            { id: 2, name: "Site 2", active:false }
         ];
  
         $scope.addWorkspace = function () {
@@ -31,6 +31,9 @@ angular.module('app.controllers', ['ngGrid', 'ngSanitize', 'app.models', 'app.fa
         };       
  
     })
+    .controller ("TabsChildController", function($scope, $log){
+  
+})
 
 
 
