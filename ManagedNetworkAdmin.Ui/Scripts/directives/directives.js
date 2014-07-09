@@ -73,7 +73,7 @@ angular.module('app.directives', [])
             scope.$watch('selected', function () {
                 if (scope.selected) {
                     tabsetController.setTabTemplate(scope.templateUrl);
-                    element.css('background-color', 'red');
+                    element.css('background-color', 'yellow');
 
 
                 }
@@ -81,7 +81,7 @@ angular.module('app.directives', [])
         },
         template:
           '<li ng-class="{active: selected}">' +
-            '<a href="" ng-click="select()">{{ title }}</a>' +
+            '<a href="" ng-click="select()">{{ title }} </a>' +
           '</li>'
     };
 });

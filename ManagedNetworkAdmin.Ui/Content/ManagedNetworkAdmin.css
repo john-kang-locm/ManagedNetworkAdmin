@@ -157,3 +157,7 @@
 {
     width: 800px;
 }
+
+.cb-active {
+    background-color: blue;
+}

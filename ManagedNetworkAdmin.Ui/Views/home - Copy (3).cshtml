@@ -12,43 +12,22 @@
 
 
 <body>
-    
-    <div ng-app="app" ng-controller="TabsParentController">
-        <tabset>
-            <tab ng-repeat="workspace in workspaces"
-                 heading="{{workspace.name}}"
-                 active=workspace.active>
-                <div ng-controller="TabsChildController"
-                     ng-init="workspace=workspace">
-                    <div>
-                        {{workspace.id}} : {{ workspace.name}}
-                    </div>
-                    <input type="text" ng-model="workspace.name" />
-                </div>
-            </tab>
-            <tab select="addWorkspace()">
-                <tab-heading>
-                    <i class="icon-plus-sign"></i>
-                </tab-heading>
-            </tab>
-        </tabset>
-    </div>
 
 
     <div class="homeMiddle" ng-app="app" ng-controller="HomeCtrl">
-@*    <div class="homeMiddle" ng-app="app" ng-controller="mainController">*@
+    <div class="homeMiddle" ng-app="app" ng-controller="mainController">
 
 
  <div class="container">
       <div class="row">
         <mytabset>
-          <mytab title="Tab 1" ng-class="{cb-tab}" template-url="/views/Template/Tab1.html"></mytab>
-          <mytab title="Tab 2" template-url="/views/Template/Tab2.html"></mytab>
-          <mytab title="Tab 3" template-url="/views/Template/Tab3.html"></mytab>
+            <mytab title="Tab 1" template-url="/views/Template/Tab1.html"></mytab>
+            <mytab title="Tab 2" template-url="/views/Template/Tab2.html"></mytab>
+            <mytab title="Tab 3" template-url="/views/Template/Tab3.html"></mytab>
         </mytabset>
       </div>
     </div>
-@*    </div>*@
+    </div>
 
 
 @*    <script src="components/angular/angular.js"></script>
