@@ -1,0 +1,107 @@
+﻿
+@{ 
+
+    PageData["title"] = "Configuration Admin Tool | Home";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+
+@*  <body ng-app="league" ng-controller="AppCtrl">*@
+  <body >
+
+<div>
+  <h1>site functions</h1>
+  <p>Soon this will show a list of all the sites, based on information from the server</p>
+</div>
+
+<div class="body">
+  <div class="siteGridStyle" ng-grid="homeGridOptions"></div>
+</div>
+    <div class="container">
+      <div class="masthead">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <ul class="nav">
+                <li ui-route="/home" ng-class="{active:$uiRoute}">
+                  <a href="#/home">
+                    <i class="icon-home"></i>
+                    Home
+                  </a>
+                </li>
+                <li ui-route="/about" ng-class="{active:$uiRoute}">
+                  <a href="#/about">
+                    <i class="icon-info-sign"></i>
+                    What is it?
+                  </a>
+                </li>
+                <li ui-route="/site" ng-class="{active:$uiRoute}">
+                  <a href="#/site">
+                    <i class="icon-github-alt"></i>
+                    sites
+                  </a>
+                </li>
+                <li ui-route="/team" ng-class="{active:$uiRoute}">
+                  <a href="#/team">
+                    <i class="icon-github-alt"></i>
+                    Teams
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ui-view="main"></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p>
+            Based on:
+            <a href="http://github.com/joshdmiller/ng-boilerplate">ngBoilerplate by Josh Miller</a>,
+            <a href="http://www.angularjs.org">AngularJS</a>,
+            <a href="http://getbootstrap.com">Bootstrap</a>,
+            <a href="http://angular-ui.github.com/bootstrap">UI Bootstrap</a>,
+            and
+            <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a>.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+<!--
+ <body>
+<div class="homeMiddle" ng-app="app" ng-controller="SiteController">
+    <div class="siteGridStyle" ng-grid="homeGridOptions"></div>
+ <p ng-bind-html="test"></p>
+<a href="/Sites">Add sites</a>
+@*<iframe ng-src="{{test}}"> </iframe>*@
+@*<div ng-bind-html="test"></div>*@
+</div>
+@*<div class="row">
+    <form class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-submit="login(userName, password)">
+        <h2 class="text-center">Home</h2>
+        <div class="form-box">
+            <div class="form-group">
+                <input ng-model="userName" type="text" class="form-control" placeholder="Username or Email" required autofocus />
+            </div>
+            <div class="form-group">
+                <input ng-model="password" type="password" class="form-control" placeholder="Password" required />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit" ng-disabled="!(userName && password)" disabled>Sign In</button>
+            </div>
+        </div>
+    </form>
+</div>*@
+</body> 
+-->
+</html>
